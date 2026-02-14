@@ -11,7 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetch("/data/services.json")
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
     .then(data => {
       const service = data.services.find(s => s.id === serviceId);
       if (!service) {
@@ -21,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Inject Title and Meta
       document.title = `${service.title} | ${data.studio}`;
-      document.querySelector('meta[name="description"]').setAttribute("content", service.description);
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute("content", service.description);
 
       // Inject Thumbnail
       const thumbnailContent = document.getElementById("product-thumbnail-content");
@@ -30,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <div style="font-size:3rem; margin-bottom:10px;">${service.details.thumbnail.icon}</div>
           ${service.details.thumbnail.title}
         `;
+      } else if (thumbnailContent) {
+        thumbnailContent.textContent = service.title;
       }
 
       // Inject Header
@@ -97,6 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => {
       console.error("Error fetching service data:", err);
-      // Optional: show an error message to the user
+      const productBody = document.getElementById("product-body");
+      if (productBody) {
+        productBody.innerHTML = `
+          <p>
+            Data layanan gagal dimuat. Jika kamu membuka file ini langsung (file://), browser biasanya memblokir <code>fetch()</code>.
+            Jalankan lewat web server (mis. VS Code Live Server) lalu refresh.
+          </p>
+        `;
+      }
     });
 });
