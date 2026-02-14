@@ -701,9 +701,110 @@ body::before {
   font-weight: 800;
 }
 
+@media (max-width: 1024px) {
+  body {
+    padding: 28px 16px 48px;
+  }
+
+  .timeline {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+
 @media (max-width: 760px) {
   body {
-    padding: 24px 14px 40px;
+    padding: 20px 12px 40px;
+    font-size: 15px;
+  }
+
+  .top-nav {
+    padding: 6px 4px 18px;
+    gap: 8px;
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .brand-mini {
+    text-align: right;
+  }
+
+  .brand-name {
+    font-size: 0.9rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.75rem;
+  }
+
+  .service-hero {
+    padding: 20px 4px 16px;
+  }
+
+  .hero-pill {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+  }
+
+  .service-hero h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin: 12px 0 12px;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .content-section {
+    padding: 20px 16px;
+    border-radius: 16px;
+    gap: 6px;
+  }
+
+  .content-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .feature {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .feature h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .feature p {
+    font-size: 0.88rem;
+  }
+
+  .feature-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 10px;
   }
 
   .timeline::before {
@@ -712,23 +813,350 @@ body::before {
 
   .timeline {
     grid-template-columns: 1fr;
+    padding: 12px 0 0;
+    gap: 12px;
+  }
+
+  .timeline li {
+    padding: 0;
   }
 
   .workflow-timeline li {
-    padding: 18px;
+    padding: 16px;
+    border-radius: 12px;
   }
 
-  .content-section {
-    padding: 24px 18px;
+  .step-num {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
   }
 
-  .service-hero {
-    padding: 26px 6px 8px;
+  .step-title {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .step-desc {
+    font-size: 0.84rem;
+    line-height: 1.5;
   }
 
   .callout {
-    padding: 16px 18px;
-    font-size: 0.94rem;
+    margin: 20px 0 0;
+    padding: 14px 14px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-radius: 12px;
+  }
+
+  .subheading {
+    font-size: 0.95rem;
+    margin: 16px 0 10px;
+  }
+
+  .chip-group {
+    gap: 6px;
+  }
+
+  .chip {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+  }
+
+  .pricing-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .price-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .price-head {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .price-title {
+    font-size: 0.95rem;
+  }
+
+  .price-amount {
+    font-size: 1.1rem;
+  }
+
+  .price-amount span {
+    font-size: 0.8rem;
+  }
+
+  .price-card ul {
+    font-size: 0.88rem;
+  }
+
+  .price-card li {
+    margin: 6px 0;
+  }
+
+  .badge {
+    top: -10px;
+    left: 12px;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .table-wrap {
+    border-radius: 12px;
+  }
+
+  .pricing-table {
+    min-width: 100%;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .pricing-table th {
+    font-size: 0.7rem;
+  }
+
+  .note-list {
+    font-size: 0.85rem;
+    margin: 10px 0 0;
+    padding-left: 16px;
+  }
+
+  .sop-accordion {
+    border-radius: 12px;
+  }
+
+  .sop-accordion summary {
+    font-size: 0.95rem;
+    padding: 10px 4px;
+  }
+
+  .checklist {
+    gap: 8px;
+  }
+
+  .checklist li {
+    font-size: 0.88rem;
+    padding-left: 24px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contact-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .contact-title {
+    font-size: 0.95rem;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    font-size: 0.85rem;
+  }
+
+  .page-footer {
+    margin-top: 20px;
+  }
+
+  .footer-inner {
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    gap: 8px 10px;
+  }
+
+  .footer-brand {
+    font-size: 0.9rem;
+  }
+
+  .footer-note {
+    font-size: 0.8rem;
+  }
+
+  .reveal {
+    animation-duration: 0.6s;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px 10px 32px;
+    font-size: 14px;
+  }
+
+  .top-nav {
+    padding: 4px 2px 12px;
+    gap: 4px;
+  }
+
+  .back-link {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .brand-name {
+    font-size: 0.8rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.7rem;
+  }
+
+  .service-hero {
+    padding: 16px 2px 12px;
+  }
+
+  .hero-pill {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+  }
+
+  .service-hero h1 {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    margin: 10px 0 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .hero-cta {
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 100%;
+    min-height: 44px;
+  }
+
+  .btn:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .content-section {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+
+  .content-section h2 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+
+  .feature {
+    padding: 14px;
+  }
+
+  .feature h3 {
+    font-size: 0.95rem;
+  }
+
+  .feature p {
+    font-size: 0.82rem;
+  }
+
+  .feature-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .workflow-timeline li {
+    padding: 14px;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    min-height: 32px;
+  }
+
+  .step-title {
+    font-size: 0.9rem;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+  }
+
+  .callout {
+    padding: 12px 12px;
+    font-size: 0.85rem;
+  }
+
+  .pricing-cards {
+    gap: 12px;
+  }
+
+  .price-card {
+    padding: 16px;
+  }
+
+  .price-title {
+    font-size: 0.9rem;
+  }
+
+  .price-amount {
+    font-size: 1rem;
+  }
+
+  .price-card ul {
+    font-size: 0.82rem;
+  }
+
+  .contact-card {
+    padding: 12px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-title {
+    font-size: 0.9rem;
+  }
+
+  .contact-value {
+    font-size: 0.8rem;
+  }
+
+  .footer-inner {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  .footer-brand {
+    font-size: 0.85rem;
+  }
+
+  .footer-note {
+    font-size: 0.75rem;
   }
 }
 
