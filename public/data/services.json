@@ -1,7 +1,10 @@
 {
   "studio": "Anambas AI Studio",
   "contact": {
-    "whatsapp": "6281268918360"
+    "whatsapp": "6281268918360",
+    "email": "business.anambas.ai@gmail.com",
+    "tiktok": "https://www.tiktok.com/@anambas.ai.studio",
+    "location": "Tarempa Selatan"
   },
   "services": [
     {
@@ -78,8 +81,8 @@
     {
       "id": "graphic-design",
       "slug": "graphic-design",
-      "title": "Graphic Design",
-      "subtitle": "Branding & visual design",
+      "title": "Design Graphic (ACS)",
+      "subtitle": "Sistem desain terukur, cepat, dan konsisten",
       "description": "Desain poster, feed sosial media, banner, dan kebutuhan visual brand.",
       "ctaMessage": "Halo, saya tertarik bekerja sama untuk layanan Graphic Design.",
       "active": true
@@ -88,7 +91,7 @@
       "id": "video-editing",
       "slug": "video-editing",
       "title": "Video Editing",
-      "subtitle": "Clean, cinematic, and engaging",
+      "subtitle": "Storytelling kuat, pacing rapi, output bersih",
       "description": "Editing video profesional untuk konten promosi, reels, dan dokumentasi.",
       "ctaMessage": "Halo, saya tertarik bekerja sama untuk layanan Video Editing.",
       "active": true

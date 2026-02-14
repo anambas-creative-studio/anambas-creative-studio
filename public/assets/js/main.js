@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3>${service.title}</h3>
             <p class="subtitle">${service.subtitle}</p>
             <p class="description">${service.description}</p>
-            <button class="service-btn">Open Project</button>
+            <button class="service-btn">Lihat Detail</button>
           `;
           card.querySelector("button").onclick = () => {
             const slug = service.slug || service.id;
