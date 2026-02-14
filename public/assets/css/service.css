@@ -93,7 +93,7 @@ body::before {
 }
 
 .service-hero {
-  padding: 32px 10px 14px;
+  padding: 48px 10px 28px;
 }
 
 .hero-pill {
@@ -112,11 +112,13 @@ body::before {
 }
 
 .service-hero h1 {
-  margin: 16px 0 12px;
+  margin: 24px 0 18px;
   font-family: "Sora", system-ui, sans-serif;
-  font-size: clamp(2.6rem, 3vw + 1.4rem, 3.6rem);
-  letter-spacing: -0.03em;
+  font-size: clamp(2.8rem, 4vw + 1.2rem, 4.2rem);
+  letter-spacing: -0.033em;
   color: #ffffff;
+  line-height: 1.15;
+  font-weight: 800;
 }
 
 .service-hero h1 span {
@@ -127,7 +129,9 @@ body::before {
   margin: 0;
   max-width: 72ch;
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-weight: 500;
 }
 
 .hero-cta {
@@ -142,8 +146,8 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 18px;
-  border-radius: 12px;
+  padding: 14px 24px;
+  border-radius: 14px;
   text-decoration: none;
   font-weight: 700;
   border: 1px solid var(--border);
@@ -151,7 +155,7 @@ body::before {
   background: rgba(255, 255, 255, 0.04);
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .btn::after {
@@ -168,9 +172,9 @@ body::before {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px -20px rgba(43, 123, 255, 0.6);
-  border-color: rgba(43, 123, 255, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -16px rgba(43, 123, 255, 0.8);
+  border-color: rgba(43, 123, 255, 0.6);
 }
 
 .btn:hover::after {
@@ -197,13 +201,14 @@ body::before {
 }
 
 .content-section {
-  padding: 30px 26px;
-  border-radius: 20px;
+  padding: 32px 28px;
+  border-radius: 22px;
   border: 1px solid var(--border);
-  background: linear-gradient(160deg, rgba(18, 32, 53, 0.75), rgba(14, 26, 44, 0.6));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 20px 40px -30px rgba(0, 0, 0, 0.65);
+  background: linear-gradient(160deg, rgba(18, 32, 53, 0.8), rgba(14, 26, 44, 0.7));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 48px -32px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .content-section h2 {
@@ -259,12 +264,12 @@ body::before {
 
 .feature {
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px;
-  background: rgba(13, 24, 40, 0.55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border-radius: 18px;
+  padding: 22px;
+  background: linear-gradient(135deg, rgba(13, 24, 40, 0.6), rgba(13, 30, 50, 0.4));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
 .feature-icon {
@@ -296,8 +301,10 @@ body::before {
 }
 
 .feature h3 {
-  margin: 0 0 8px;
-  font-size: 1.05rem;
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .feature p {
@@ -306,9 +313,10 @@ body::before {
 }
 
 .feature:hover {
-  transform: translateY(-3px);
-  border-color: rgba(43, 123, 255, 0.35);
-  box-shadow: 0 18px 30px -24px rgba(5, 10, 20, 0.6);
+  transform: translateY(-6px);
+  border-color: rgba(43, 123, 255, 0.6);
+  box-shadow: 0 24px 48px -20px rgba(43, 123, 255, 0.5), 0 8px 16px -10px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(13, 24, 40, 0.75), rgba(13, 30, 50, 0.55));
 }
 
 .timeline {
@@ -396,11 +404,12 @@ body::before {
 .table-wrap {
   width: 100%;
   overflow-x: auto;
-  border-radius: 16px;
+  border-radius: 18px;
   border: 1px solid var(--border);
-  background: rgba(11, 22, 38, 0.55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(11, 22, 38, 0.65), rgba(11, 28, 44, 0.5));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .pricing-table {
@@ -412,7 +421,7 @@ body::before {
 .pricing-table th,
 .pricing-table td {
   text-align: left;
-  padding: 14px;
+  padding: 16px;
   border-bottom: 1px solid var(--border);
   vertical-align: top;
 }
@@ -426,6 +435,14 @@ body::before {
 
 .pricing-table tr:last-child td {
   border-bottom: none;
+}
+
+.pricing-table tbody tr {
+  transition: background-color 0.25s ease;
+}
+
+.pricing-table tbody tr:hover {
+  background-color: rgba(43, 123, 255, 0.08);
 }
 
 .note-list {
@@ -443,16 +460,31 @@ body::before {
 .price-card {
   position: relative;
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 18px;
-  background: rgba(12, 24, 40, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 22px;
+  background: linear-gradient(135deg, rgba(12, 24, 40, 0.7), rgba(13, 30, 50, 0.5));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .price-card.highlight {
-  border-color: rgba(43, 123, 255, 0.8);
-  box-shadow: 0 18px 30px -24px var(--glow);
+  border-color: rgba(43, 123, 255, 1);
+  box-shadow: 0 24px 48px -16px var(--glow);
+  background: linear-gradient(135deg, rgba(43, 123, 255, 0.12), rgba(35, 194, 255, 0.08));
+  position: relative;
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(43, 123, 255, 0.6);
+  box-shadow: 0 16px 40px -16px rgba(43, 123, 255, 0.4);
+}
+
+.price-card.highlight:hover {
+  transform: translateY(-6px);
+  border-color: rgba(43, 123, 255, 1);
+  box-shadow: 0 32px 64px -12px var(--glow);
 }
 
 .badge {
@@ -552,20 +584,21 @@ body::before {
 
 .contact-card {
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 18px;
+  padding: 18px;
   text-decoration: none;
-  background: rgba(12, 22, 38, 0.58);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(12, 22, 38, 0.65), rgba(13, 30, 50, 0.45));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: inherit;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .contact-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(43, 123, 255, 0.5);
-  box-shadow: 0 18px 28px -24px rgba(5, 10, 20, 0.6);
+  transform: translateY(-4px);
+  border-color: rgba(43, 123, 255, 0.7);
+  box-shadow: 0 16px 32px -16px rgba(43, 123, 255, 0.4);
+  background: linear-gradient(135deg, rgba(12, 22, 38, 0.8), rgba(13, 30, 50, 0.6));
 }
 
 .contact-card.static:hover {
