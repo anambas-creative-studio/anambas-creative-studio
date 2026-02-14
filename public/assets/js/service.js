@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
-  const serviceId = params.get("id");
+  const serviceId =
+    params.get("id") ||
+    document.body?.dataset?.serviceId ||
+    window.__SERVICE_ID__;
 
   if (!serviceId) {
     window.location.href = "/"; // Redirect to home if no ID

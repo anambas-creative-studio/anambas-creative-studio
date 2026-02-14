@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <button class="service-btn">Open Project</button>
           `;
           card.querySelector("button").onclick = () => {
-            window.location.href = `/service.html?id=${service.id}`;
+            const slug = service.slug || service.id;
+            window.location.href = `/services/${slug}.html`;
           };
           container.appendChild(card);
         });
