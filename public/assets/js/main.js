@@ -1,4 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const typeTarget = document.getElementById("type-target");
+  if (typeTarget) {
+    const fullText = typeTarget.getAttribute("data-text") || typeTarget.textContent || "";
+    const cursor = document.querySelector(".type-cursor");
+    let idx = 0;
+    const speed = 60;
+    typeTarget.textContent = "";
+    const tick = () => {
+      typeTarget.textContent = fullText.slice(0, idx);
+      idx += 1;
+      if (idx <= fullText.length) {
+        setTimeout(tick, speed);
+      }
+    };
+    setTimeout(tick, 200);
+  }
   const container = document.getElementById("services");
   if (!container) return;
 

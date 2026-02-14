@@ -202,3 +202,21 @@ body {
   .hero-brand { margin-bottom: 28px; }
   .hero-logo { width: 40px; height: 40px; }
 }
+
+.type-cursor {
+  display: inline-block;
+  margin-left: 6px;
+  color: #c7d2fe;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .type-cursor {
+    animation: none;
+  }
+}
