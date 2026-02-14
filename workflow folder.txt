@@ -1,38 +1,31 @@
-anambas-ai-studio/
-│
-├─ index.html                 ← HOME (landing / pilih layanan)
-│
-├─ services/                  ← HALAMAN DETAIL LAYANAN
-│   ├─ ai-video.html
-│   ├─ graphic-design.html
-│   ├─ video-editing.html
-│   └─ social-media.html
-│
-├─ src/
-│   ├─ assets/
-│   │   ├─ css/
-│   │   │   ├─ style.css      ← global (home + services)
-│   │   │   └─ service.css    ← khusus halaman detail (opsional)
-│   │   │
-│   │   ├─ js/
-│   │   │   ├─ main.js        ← logic home (Open Project → detail)
-│   │   │   └─ service.js     ← logic halaman detail (CTA WA)
-│   │   │
-│   │   └─ img/
-│   │       ├─ logo.svg
-│   │       ├─ hero-bg.jpg
-│   │       └─ services/
-│   │           ├─ ai-video.jpg
-│   │           ├─ design.jpg
-│   │           └─ social-media.jpg
-│   │
-│   └─ data/
-│       └─ services.json      ← data layanan (judul, deskripsi, WA)
-│
-├─ public/
-│   ├─ favicon.ico
-│   └─ og-image.png
-│
-├─ vercel.json                ← (opsional, biasanya tidak perlu)
-├─ README.md
-└─ .gitignore
+anambas-creative-studio/
+|
+|-- public/
+|   |-- index.html                 <- HOME (landing / pilih layanan)
+|   |-- service.html               <- Detail layanan (dynamic via services.json)
+|   |-- services/                  <- Halaman detail statis per layanan
+|   |   |-- ai-video.html
+|   |   |-- graphic-design.html
+|   |   |-- video-editing.html
+|   |   `-- social-media.html
+|   |
+|   |-- assets/
+|   |   |-- css/
+|   |   |   |-- style.css          <- global (home)
+|   |   |   `-- service.css        <- halaman detail
+|   |   |
+|   |   |-- js/
+|   |   |   |-- main.js            <- logic home (pilih layanan)
+|   |   |   |-- service.js         <- inject detail (service.html)
+|   |   |   `-- whatsapp.js        <- handler tombol WA (tanpa nomor)
+|   |   |
+|   |   `-- img/                   <- jika ada aset gambar
+|   |
+|   |-- data/
+|   |   `-- services.json          <- data layanan + kontak
+|   |
+|   |-- favicon.ico
+|   `-- og-image.png
+|
+|-- README.md
+`-- .gitignore

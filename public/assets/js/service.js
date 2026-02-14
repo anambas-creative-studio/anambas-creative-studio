@@ -90,14 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      // Setup CTA Button
+      // Setup CTA Button (handled by whatsapp.js)
       const btn = document.getElementById("contact-wa");
       if (btn) {
-        const phone = data.contact.whatsapp;
-        const message = encodeURIComponent(service.ctaMessage);
-        btn.addEventListener("click", () => {
-          window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-        });
+        btn.setAttribute("data-wa-message", service.ctaMessage || "");
+        btn.classList.add("wa-btn");
       }
 
     })

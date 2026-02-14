@@ -34,6 +34,29 @@ body {
   position: relative;
 }
 
+/* Brand Row */
+.hero-brand {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.hero-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.hero-brand-name {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
 /* Ambient Light Effect */
 .hero::after {
   content: '';
@@ -176,4 +199,6 @@ body {
 @media (max-width: 600px) {
   .hero h1 { font-size: 2.5rem; }
   .services-grid { grid-template-columns: 1fr; }
+  .hero-brand { margin-bottom: 28px; }
+  .hero-logo { width: 40px; height: 40px; }
 }
