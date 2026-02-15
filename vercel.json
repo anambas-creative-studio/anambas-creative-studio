@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "buildCommand": "echo 'static site'",
-  "framework": null,
-  "public": "public",
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
