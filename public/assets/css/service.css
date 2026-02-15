@@ -196,8 +196,8 @@ body::before {
 
 .content-card {
   display: grid;
-  gap: 100px;
-  padding: 40px 16px 80px;
+  gap: 32px;
+  padding: 32px 10px 48px;
 }
 
 .content-section {
@@ -262,7 +262,7 @@ body::before {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  gap: 16px;
 }
 
 .feature {
@@ -362,7 +362,7 @@ body::before {
   padding: 24px 0 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
+  gap: 18px;
   position: relative;
 }
 
@@ -543,7 +543,7 @@ body::before {
 .pricing-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  gap: 24px;
   perspective: 1000px;
 }
 
@@ -983,7 +983,7 @@ body::before {
   }
 
   .checklist {
-    gap: 16px;
+    gap: 8px;
   }
 
   .checklist li {
@@ -993,7 +993,7 @@ body::before {
 
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 10px;
   }
 
   .contact-card {
@@ -1103,9 +1103,8 @@ body::before {
   }
 
   .content-section {
-    padding: 24px 20px;
-    border-radius: 16px;
-    gap: 12px;
+    padding: 16px 12px;
+    border-radius: 12px;
   }
 
   .content-section h2 {
@@ -1155,7 +1154,7 @@ body::before {
   }
 
   .pricing-cards {
-    gap: 32px;
+    gap: 12px;
   }
 
   .price-card {
@@ -1343,8 +1342,8 @@ body::before {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  margin-top: 40px;
+  gap: 24px;
+  margin-top: 32px;
   perspective: 1200px;
 }
 
@@ -1416,7 +1415,7 @@ body::before {
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 32px;
+    gap: 16px;
   }
 }
 
