@@ -192,7 +192,219 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 5. Mobile Menu Logic ---
+    // --- 5. Service Toggle Logic (NEW) ---
+    const serviceToggleButtons = document.querySelectorAll('.service-toggle-btn');
+    const serviceContents = document.querySelectorAll('.service-content');
+
+    serviceToggleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-service');
+            const targetContent = document.getElementById(`service-${target}`);
+
+            // Toggle behavior: if already open, close it. Otherwise, open it.
+            if (!targetContent.classList.contains('hidden')) {
+                // Close it
+                targetContent.classList.add('hidden');
+            } else {
+                // Close all others first
+                serviceContents.forEach(content => content.classList.add('hidden'));
+
+                // Open the clicked one
+                targetContent.classList.remove('hidden');
+
+                // Smooth scroll to the content
+                setTimeout(() => {
+                    targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        });
+    });
+
+    // --- 6. Populate Pricing for Each Service ---
+    function renderPricingCards(service, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        let html = '';
+
+        if (service === 'graphic') {
+            html = `
+                <!-- Digital -->
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                    <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Konten Digital</h4>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-start">
+                            <span>Desain Feed/Story</span>
+                            <span class="font-bold text-brand-blue">Rp 150.000</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span>Carousel (5 Slide)</span>
+                            <span class="font-bold text-brand-blue">Rp 350.000</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span>Thumbnail Video</span>
+                            <span class="font-bold text-brand-blue">Rp 100.000</span>
+                        </li>
+                    </ul>
+                    <p class="mt-4 text-xs text-slate-500">*Output JPG/PNG. Max 3x Revisi.</p>
+                </div>
+
+                <!-- Print -->
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                    <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Cetak & Event</h4>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-start">
+                            <span>Poster Event</span>
+                            <span class="font-bold text-brand-blue">Rp 250.000</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span>Banner/Spanduk</span>
+                            <span class="font-bold text-brand-blue">Rp 300.000</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span>Merchandise</span>
+                            <span class="font-bold text-brand-blue">Rp 200.000</span>
+                        </li>
+                    </ul>
+                    <p class="mt-4 text-xs text-slate-500">*File Siap Cetak (CMYK).</p>
+                </div>
+
+                <!-- Monthly -->
+                <div class="bg-slate-900/50 backdrop-blur-sm border rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 border-brand-blue/50 bg-brand-blue/5 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-xs font-bold px-3 py-1 rounded-bl-lg">⭐ BEST SELLER</div>
+                    <h4 class="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2">Paket Bulanan</h4>
+
+                    <div class="mb-6">
+                        <h5 class="font-bold text-brand-blue mb-1">UMKM Starter</h5>
+                        <p class="text-2xl font-extrabold text-white">Rp 1.200.000 <span class="text-sm font-normal text-slate-400">/bln</span></p>
+                        <p class="text-sm text-slate-400 mt-1">10 Desain (Feed/Story) + Copywriting.</p>
+                    </div>
+
+                    <div>
+                        <h5 class="font-bold text-brand-purple mb-1">Business Pro</h5>
+                        <p class="text-2xl font-extrabold text-white">Rp 3.000.000 <span class="text-sm font-normal text-slate-400">/bln</span></p>
+                        <p class="text-sm text-slate-400 mt-1">25 Desain + 1 Spanduk + Riset Hashtag.</p>
+                    </div>
+                </div>
+            `;
+        } else if (service === 'video') {
+            html = `
+                <!-- Shooting -->
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                    <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Jasa Shooting</h4>
+                    <p class="text-sm text-slate-400 mb-4">Dokumentasi Mobile (Poco X3 Pro - 1080p 60fps)</p>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between">
+                                <span class="font-semibold text-white">Shooting Kegiatan</span>
+                                <span class="font-bold text-brand-blue">Rp 350.000</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Max 6 jam, file mentah jika diminta.</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-white">Tambahan Waktu</span>
+                            <span class="font-bold text-brand-blue">+Rp 50rb/jam</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editing -->
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                    <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Jasa Editing</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <div class="flex justify-between">
+                                <span class="font-semibold text-white">Lvl 1: Dokumentasi</span>
+                                <span class="font-bold text-brand-blue">Rp 150.000</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Cut-to-cut, Music No-Copyright.</p>
+                        </li>
+                        <li>
+                            <div class="flex justify-between">
+                                <span class="font-semibold text-white">Lvl 2: Highlight</span>
+                                <span class="font-bold text-brand-blue">Rp 250.000</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Transisi, Teks, Color Standard.</p>
+                        </li>
+                        <li>
+                            <div class="flex justify-between">
+                                <span class="font-semibold text-white">Lvl 3: Cinematic</span>
+                                <span class="font-bold text-brand-blue">Rp 500.000</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Storytelling, Grading Premium, SFX.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bundles -->
+                <div class="bg-slate-900/50 backdrop-blur-sm border rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 border-brand-purple/50 bg-brand-purple/5 relative">
+                    <div class="absolute top-0 right-0 bg-brand-yellow text-black text-xs font-bold px-3 py-1 rounded-bl-lg">PALING LARIS</div>
+                    <h4 class="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2">Paket Hemat (All-in)</h4>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h5 class="font-bold text-white">Konten Sosmed (UMKM)</h5>
+                            <p class="text-xl font-extrabold text-brand-blue">Rp 500.000</p>
+                            <p class="text-xs text-slate-400">Shooting 2-3 Jam + Edit Highlight.</p>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-white">Dokumentasi Acara</h5>
+                            <p class="text-xl font-extrabold text-brand-blue">Rp 600.000</p>
+                            <p class="text-xs text-slate-400">Shooting 6 Jam + Edit Dokumentasi.</p>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-white">Video Profil</h5>
+                            <p class="text-xl font-extrabold text-brand-blue">Rp 1.000.000</p>
+                            <p class="text-xs text-slate-400">Shooting Terkonsep + Edit Cinematic.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (service === 'ai') {
+            html = `
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                    <h4 class="text-2xl font-bold text-white mb-2">Premium Basic</h4>
+                    <p class="text-brand-blue font-extrabold text-3xl mb-4">Rp 500.000 <span class="text-sm font-normal text-slate-400">/video</span></p>
+                    <p class="text-slate-400 mb-6 text-sm">Satu Harga, Kualitas Terbaik. Cocok untuk Iklan & Personal Branding.</p>
+
+                    <ul class="space-y-3 text-sm mb-6">
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Konsep & Naskah Kreatif</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Visual Sinematik (3-5 Scene)</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Voice Over & Audio Pro</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Full HD 1080p (9:16)</li>
+                    </ul>
+                    <a href="https://wa.me/6281268918360" class="block text-center bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-lg transition">Pesan Sekarang</a>
+                </div>
+
+                <div class="bg-slate-900/50 backdrop-blur-sm border rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 border-brand-blue/50 bg-gradient-to-br from-brand-blue/10 to-brand-purple/10">
+                    <div class="flex justify-between items-start">
+                        <h4 class="text-2xl font-bold text-white mb-2">Monthly Creator</h4>
+                        <span class="inline-block bg-brand-yellow text-brand-darker text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wide mb-2">HEMAT 40%</span>
+                    </div>
+
+                    <p class="text-brand-purple font-extrabold text-3xl mb-4">Rp 3.000.000 <span class="text-sm font-normal text-slate-400">/bulan</span></p>
+                    <p class="text-slate-400 mb-6 text-sm">Solusi konten rutin. 10 Video kualitas Premium.</p>
+
+                    <ul class="space-y-3 text-sm mb-6">
+                        <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> 10 Video Spesifikasi Premium</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Prioritas Pengerjaan (VVIP)</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Konsistensi Branding Karakter</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Bonus Riset Ide & Kalender</li>
+                    </ul>
+                    <a href="https://wa.me/6281268918360" class="block text-center bg-brand-blue hover:bg-brand-blue/90 text-white py-2 rounded-lg transition">Langganan Sekarang</a>
+                </div>
+            `;
+        }
+
+        container.innerHTML = html;
+    }
+
+    // Populate pricing for all services
+    renderPricingCards('graphic', 'pricing-graphic-service');
+    renderPricingCards('video', 'pricing-video-service');
+    renderPricingCards('ai', 'pricing-ai-service');
+
+    // --- 7. Mobile Menu Logic ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
     const mobileMenu = document.getElementById('mobile-menu');
