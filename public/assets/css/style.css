@@ -96,6 +96,54 @@ body {
   padding: 40px 20px 100px;
 }
 
+.category-tabs {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  padding: 6px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: rgba(24, 24, 27, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.category-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.category-tabs {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.category-tab {
+  flex: 0 0 auto;
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-tab:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 18px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.category-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
 .services-grid {
   max-width: 1200px;
   margin: 0 auto;

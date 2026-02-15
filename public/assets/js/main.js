@@ -17,6 +17,81 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const container = document.getElementById("services");
   if (!container) return;
+  const tabs = document.querySelector(".category-tabs");
+  let allServices = [];
+
+  const renderServices = (dataArray) => {
+    container.textContent = "";
+    const items = dataArray.filter(service => service.active);
+    if (items.length === 0) {
+      const emptyCard = document.createElement("div");
+      emptyCard.className = "service-card";
+
+      const h3 = document.createElement("h3");
+      h3.textContent = "Belum ada layanan";
+
+      const subtitle = document.createElement("p");
+      subtitle.className = "subtitle";
+      subtitle.textContent = "Coba kategori lain";
+
+      const description = document.createElement("p");
+      description.className = "description";
+      description.textContent = "Tidak ada layanan aktif untuk kategori ini saat ini.";
+
+      emptyCard.appendChild(h3);
+      emptyCard.appendChild(subtitle);
+      emptyCard.appendChild(description);
+      container.appendChild(emptyCard);
+      return;
+    }
+
+    items.forEach(service => {
+      const card = document.createElement("div");
+      card.className = "service-card";
+
+      // Create elements safely to prevent XSS
+      const h3 = document.createElement("h3");
+      h3.textContent = service.title;
+
+      const subtitle = document.createElement("p");
+      subtitle.className = "subtitle";
+      subtitle.textContent = service.subtitle;
+
+      const description = document.createElement("p");
+      description.className = "description";
+      description.textContent = service.description;
+
+      const button = document.createElement("button");
+      button.className = "service-btn";
+      button.textContent = "Lihat Detail";
+      button.onclick = () => {
+        const slug = service.slug || service.id;
+        window.location.href = `/services/${slug}.html`;
+      };
+
+      card.appendChild(h3);
+      card.appendChild(subtitle);
+      card.appendChild(description);
+      card.appendChild(button);
+      container.appendChild(card);
+    });
+  };
+
+  if (tabs) {
+    tabs.addEventListener("click", (event) => {
+      const button = event.target.closest(".category-tab");
+      if (!button) return;
+      tabs.querySelectorAll(".category-tab").forEach(tab => {
+        tab.classList.toggle("active", tab === button);
+      });
+
+      const filter = button.dataset.filter || "all";
+      const filtered = filter === "all"
+        ? allServices
+        : allServices.filter(service => service.category === filter);
+      renderServices(filtered);
+    });
+  }
 
   fetch("/data/services.json")
     .then(res => {
@@ -24,38 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then(data => {
-      data.services
-        .filter(s => s.active)
-        .forEach(service => {
-          const card = document.createElement("div");
-          card.className = "service-card";
-
-          // Create elements safely to prevent XSS
-          const h3 = document.createElement("h3");
-          h3.textContent = service.title;
-
-          const subtitle = document.createElement("p");
-          subtitle.className = "subtitle";
-          subtitle.textContent = service.subtitle;
-
-          const description = document.createElement("p");
-          description.className = "description";
-          description.textContent = service.description;
-
-          const button = document.createElement("button");
-          button.className = "service-btn";
-          button.textContent = "Lihat Detail";
-          button.onclick = () => {
-            const slug = service.slug || service.id;
-            window.location.href = `/services/${slug}.html`;
-          };
-
-          card.appendChild(h3);
-          card.appendChild(subtitle);
-          card.appendChild(description);
-          card.appendChild(button);
-          container.appendChild(card);
-        });
+      allServices = Array.isArray(data.services) ? data.services : [];
+      renderServices(allServices);
     })
     .catch(err => {
       console.error("services.json error:", err);

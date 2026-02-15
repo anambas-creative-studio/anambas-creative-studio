@@ -10,6 +10,7 @@
     {
       "id": "ai-video",
       "slug": "ai-video",
+      "category": "ai",
       "title": "AI Video Production",
       "subtitle": "AI-powered visual storytelling",
       "description": "Pembuatan video berbasis AI untuk promosi, branding, dan konten digital.",
@@ -81,6 +82,7 @@
     {
       "id": "graphic-design",
       "slug": "graphic-design",
+      "category": "design",
       "title": "Design Graphic (ACS)",
       "subtitle": "Sistem desain terukur, cepat, dan konsisten",
       "description": "Desain poster, feed sosial media, banner, dan kebutuhan visual brand.",
@@ -90,6 +92,7 @@
     {
       "id": "video-editing",
       "slug": "video-editing",
+      "category": "video",
       "title": "Video Editing",
       "subtitle": "Storytelling kuat, pacing rapi, output bersih",
       "description": "Editing video profesional untuk konten promosi, reels, dan dokumentasi.",
@@ -99,6 +102,7 @@
     {
       "id": "social-media",
       "slug": "social-media",
+      "category": "social-media",
       "title": "Social Media Management",
       "subtitle": "Content & growth strategy",
       "description": "Manajemen media sosial, perencanaan konten, dan strategi engagement.",
