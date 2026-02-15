@@ -93,7 +93,8 @@ body::before {
 }
 
 .service-hero {
-  padding: 48px 10px 28px;
+  padding: 48px 10px 32px;
+  margin-bottom: 24px;
 }
 
 .hero-pill {
@@ -1229,7 +1230,7 @@ body::before {
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px) scale(0.98);
+  transform: translateY(20px) scale(0.98);
   animation: fadeUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   animation-delay: var(--delay, 0s);
 }
@@ -1265,12 +1266,12 @@ body::before {
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(10px) scale(0.98);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
