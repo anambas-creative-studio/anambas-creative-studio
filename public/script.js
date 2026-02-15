@@ -129,15 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 3. Pricing Tabs Logic ---
-    const tabButtons = document.querySelectorAll('.pricing-tab-btn');
-    const tabContents = document.querySelectorAll('.pricing-content');
+    const pricingTabButtons = document.querySelectorAll('.pricing-tab-btn');
+    const pricingTabContents = document.querySelectorAll('.pricing-content');
 
-    tabButtons.forEach(btn => {
+    pricingTabButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const target = btn.getAttribute('data-tab');
 
             // Update Buttons
-            tabButtons.forEach(b => {
+            pricingTabButtons.forEach(b => {
                 if (b.getAttribute('data-tab') === target) {
                     b.className = "pricing-tab-btn flex items-center gap-2 px-6 py-3 rounded-full font-bold transition duration-300 bg-brand-blue text-white shadow-lg shadow-brand-blue/30 scale-105";
                 } else {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Update Content
-            tabContents.forEach(content => {
+            pricingTabContents.forEach(content => {
                 if (content.id === `pricing-${target}`) {
                     content.classList.remove('hidden');
                     // Trigger animation restart
@@ -160,7 +160,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 4. Mobile Menu Logic ---
+    // --- 4. Workflow Tabs Logic ---
+    const workflowTabButtons = document.querySelectorAll('.workflow-tab-btn');
+    const workflowTabContents = document.querySelectorAll('.workflow-content');
+
+    workflowTabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+
+            // Update Buttons
+            workflowTabButtons.forEach(b => {
+                if (b.getAttribute('data-tab') === target) {
+                    b.className = "workflow-tab-btn flex items-center gap-2 px-6 py-3 rounded-full font-bold transition duration-300 bg-brand-blue text-white shadow-lg shadow-brand-blue/30 scale-105";
+                } else {
+                    b.className = "workflow-tab-btn flex items-center gap-2 px-6 py-3 rounded-full font-bold transition duration-300 bg-slate-800 text-slate-400 hover:bg-slate-700";
+                }
+            });
+
+            // Update Content
+            workflowTabContents.forEach(content => {
+                if (content.id === `workflow-content-${target}`) {
+                    content.classList.remove('hidden');
+                    // Trigger animation restart
+                    content.classList.remove('animate-fade-in');
+                    void content.offsetWidth; // trigger reflow
+                    content.classList.add('animate-fade-in');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // --- 5. Mobile Menu Logic ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
     const mobileMenu = document.getElementById('mobile-menu');
