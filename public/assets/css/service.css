@@ -197,7 +197,7 @@ body::before {
 
 .content-card {
   display: grid;
-  gap: 60px;
+  gap: 40px;
   padding: 40px 10px 80px;
 }
 
