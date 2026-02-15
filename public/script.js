@@ -2,28 +2,28 @@
 // Data for Workflows
 const WORKFLOWS = {
     graphic: [
-        { title: "Intake & Briefing", description: "Mengunci spesifikasi teknis dan konten." },
-        { title: "Visual Direction", description: "Riset warna, font, dan mood." },
-        { title: "Production", description: "Eksekusi layout dan elemen visual." },
-        { title: "Quality Control", description: "Cek typo dan kontras mandiri." },
-        { title: "Feedback", description: "Revisi ringan & finalisasi." },
-        { title: "Archiving", description: "Ekspor file siap pakai." },
+        { title: "Diskusi & Briefing", description: "Memahami kebutuhan dan tujuan visual Anda." },
+        { title: "Riset Konsep", description: "Menentukan arah gaya, warna, dan mood." },
+        { title: "Proses Desain", description: "Mengubah ide menjadi draft visual nyata." },
+        { title: "Pengecekan Kualitas", description: "Memastikan tidak ada typo dan elemen yang salah." },
+        { title: "Revisi & Finalisasi", description: "Penyempurnaan detail sesuai masukan Anda." },
+        { title: "Serah Terima File", description: "Pengiriman seluruh file master siap pakai." },
     ],
     video: [
-        { title: "Ingest", description: "Backup & Sortir footage." },
-        { title: "Assembly", description: "Rough cut sesuai alur cerita." },
-        { title: "Mixing", description: "Audio treatment & musik." },
-        { title: "Grading", description: "Color correction agar seragam." },
-        { title: "Graphics", description: "Judul & elemen visual." },
-        { title: "QC & Export", description: "Cek final & render." },
+        { title: "Seleksi Materi", description: "Memilih footage terbaik untuk dirangkai." },
+        { title: "Penyusunan Cerita", description: "Menata alur video agar pesan tersampaikan." },
+        { title: "Visual & Warna", description: "Memperindah tampilan agar terlihat sinematik." },
+        { title: "Musik & Suara", description: "Menambahkan audio agar suasana lebih hidup." },
+        { title: "Teks & Grafis", description: "Menambahkan judul dan elemen pendukung." },
+        { title: "Final Rendering", description: "Proses akhir menjadikan video siap tayang." },
     ],
     ai: [
-        { title: "Ide & Naskah", description: "Skrip & breakdown scene." },
-        { title: "Visual Prompting", description: "Kunci gaya visual 3D." },
-        { title: "Motion & Gen", description: "Start/End frame & Generate video." },
-        { title: "VO & Audio", description: "Generate suara & musik." },
-        { title: "Editing", description: "Assembly & Enhancing." },
-        { title: "Final Export", description: "Upscale HD+." },
+        { title: "Pengembangan Cerita", description: "Merancang naskah dan alur adegan." },
+        { title: "Penciptaan Karakter", description: "Mendesain tokoh dan dunia visual 3D." },
+        { title: "Produksi Visual", description: "Mewujudkan imajinasi menjadi video nyata." },
+        { title: "Pengisian Suara", description: "Menghidupkan karakter dengan suara dan musik." },
+        { title: "Penyatuan Elemen", description: "Menggabungkan visual dan audio menjadi utuh." },
+        { title: "Hasil Akhir HD", description: "Video resolusi tinggi siap untuk publikasi." },
     ]
 };
 
