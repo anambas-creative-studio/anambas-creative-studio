@@ -1,0 +1,19 @@
+{
+  "name": "anambas-creative-studio",
+  "version": "1.0.0",
+  "description": "Anambas Creative Studio - Professional Creative Solutions",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx http-server public -p 3000"
+  },
+  "keywords": [
+    "design",
+    "video",
+    "ai",
+    "creative",
+    "studio"
+  ],
+  "author": "Anambas Creative Studio",
+  "license": "UNLICENSED"
+}

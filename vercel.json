@@ -1,17 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
-    }
-  ],
+  "root": "public",
   "headers": [
     {
       "source": "/(.*)",
@@ -61,7 +50,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(?:html|json)$",
+      "source": "/(.*)\\.(?:html|json|xml|txt)$",
       "headers": [
         {
           "key": "Cache-Control",
