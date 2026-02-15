@@ -196,8 +196,8 @@ body::before {
 
 .content-card {
   display: grid;
-  gap: 80px;
-  padding: 32px 10px 64px;
+  gap: 100px;
+  padding: 40px 16px 80px;
 }
 
 .content-section {
@@ -983,7 +983,7 @@ body::before {
   }
 
   .checklist {
-    gap: 8px;
+    gap: 16px;
   }
 
   .checklist li {
@@ -993,7 +993,7 @@ body::before {
 
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 24px;
   }
 
   .contact-card {
@@ -1155,7 +1155,7 @@ body::before {
   }
 
   .pricing-cards {
-    gap: 12px;
+    gap: 32px;
   }
 
   .price-card {
@@ -1416,7 +1416,7 @@ body::before {
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
+    gap: 32px;
   }
 }
 
