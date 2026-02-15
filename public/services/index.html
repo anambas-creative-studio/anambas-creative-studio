@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://picsum.photos/32/32" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACS | Anambas Creative Studio</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#3b82f6',
+                            purple: '#a855f7',
+                            yellow: '#fbbf24',
+                            dark: '#0f172a',
+                            darker: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body
+    class="bg-brand-darker text-slate-300 antialiased selection:bg-brand-blue selection:text-white font-sans min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- 1. Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 bg-brand-darker/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold text-white tracking-wider flex items-center gap-2">
+                        <span class="text-brand-blue text-2xl"><i className="fa-solid fa-layer-group"></i></span>
+                        ACS <span className="hidden sm:inline text-slate-400 font-light">| Anambas Creative
+                            Studio</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#tentang"
+                            class="text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition">Tentang</a>
+                        <a href="#layanan"
+                            class="text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition">Layanan</a>
+                        <a href="#workflow"
+                            class="text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition">Workflow</a>
+                        <a href="#harga"
+                            class="text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition">Harga</a>
+                        <a href="#sop"
+                            class="text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition">SOP</a>
+                        <a href="#kontak"
+                            class="text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition">Kontak</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white p-2"
+                        aria-label="Toggle mobile menu">
+                        <i id="mobile-menu-icon"
+                            class="fa-solid fa-bars text-2xl transition-transform duration-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="md:hidden bg-brand-darker border-b border-white/10 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 border-none">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#tentang"
+                    class="mobile-link text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Tentang</a>
+                <a href="#layanan"
+                    class="mobile-link text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                <a href="#workflow"
+                    class="mobile-link text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Workflow</a>
+                <a href="#harga"
+                    class="mobile-link text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Harga</a>
+                <a href="#sop"
+                    class="mobile-link text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">SOP</a>
+                <a href="#kontak"
+                    class="mobile-link text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 text-center overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-20 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-blue rounded-full blur-[120px]">
+            </div>
+            <div
+                class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-purple rounded-full blur-[120px]">
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                Di dunia yang bergerak cepat, <br class="hidden md:block" />
+                visual adalah <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple">bahasa
+                    utama.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto">
+                <span class="font-bold text-white">Design. Video. AI.</span> Mari berhenti sekadar membuat konten. Mari
+                mulai membangun dampak.
+            </p>
+            <a href="https://wa.me/6281268918360"
+                class="inline-flex items-center gap-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold py-4 px-8 rounded-full transition transform hover:scale-105 shadow-lg shadow-brand-blue/25">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                Konsultasi Sekarang
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. Tentang Kami & Prinsip -->
+    <section id="tentang" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Section Title -->
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">Tentang ACS</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Kami tidak bekerja berdasarkan mood semata,
+                    melainkan menggunakan sistem yang terukur.</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-light">
+                    <span class="font-semibold text-white">Anambas Creative Studio</span> percaya bahwa di dunia yang
+                    bergerak cepat, visual bukan lagi sekadar pelengkap. Ia adalah bahasa utama.
+                    Sebuah desain bisa membangun kepercayaan, sebuah video bisa menggerakkan emosi, dan
+                    teknologi AI mampu melampaui batas imajinasi.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 text-center group">
+                    <div
+                        class="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-blue transition duration-300">
+                        <i class="fa-solid fa-gears text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sistem di Atas Alat</h3>
+                    <p class="text-slate-400">Desain yang bagus bukan soal alat mahal, tapi soal sistem yang jelas dan
+                        alur kerja yang terukur.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 text-center group">
+                    <div
+                        class="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-purple transition duration-300">
+                        <i class="fa-solid fa-clock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Waktu Terkontrol</h3>
+                    <p class="text-slate-400">Kami bekerja dengan estimasi waktu yang disiplin untuk setiap tahap
+                        produksi.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 text-center group">
+                    <div
+                        class="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-yellow transition duration-300">
+                        <i class="fa-solid fa-fingerprint text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Gaya Konsisten</h3>
+                    <p class="text-slate-400">Membangun pola visual yang <i>repeatable</i> untuk menjaga identitas brand
+                        tetap stabil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Layanan & Workflow -->
+    <section id="workflow" class="py-20 bg-brand-darker relative">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">Layanan & Workflow</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Transparansi proses adalah kunci kualitas kami.</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="space-y-16">
+
+                <!-- Graphic Design -->
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <i class="fa-solid fa-pen-nib text-brand-blue text-2xl"></i>
+                        <h3 class="text-2xl font-bold text-white">Graphic Design Workflow</h3>
+                    </div>
+                    <div class="bg-slate-900/50 rounded-2xl p-8 border border-slate-800">
+                        <div class="grid grid-cols-2 md:grid-cols-6 gap-6 relative" id="workflow-graphic">
+                            <!-- Javascript will populate this -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Editing -->
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <i class="fa-solid fa-video text-brand-purple text-2xl"></i>
+                        <h3 class="text-2xl font-bold text-white">Video Editing Workflow</h3>
+                    </div>
+                    <div class="bg-slate-900/50 rounded-2xl p-8 border border-slate-800">
+                        <div class="grid grid-cols-2 md:grid-cols-6 gap-6" id="workflow-video">
+                            <!-- Javascript will populate this -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Video -->
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <i class="fa-solid fa-robot text-brand-yellow text-2xl"></i>
+                        <h3 class="text-2xl font-bold text-white">AI 3D Storyteller Workflow</h3>
+                    </div>
+                    <div class="bg-slate-900/50 rounded-2xl p-8 border border-slate-800">
+                        <div class="grid grid-cols-2 md:grid-cols-6 gap-6" id="workflow-ai">
+                            <!-- Javascript will populate this -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Harga / Rate Card -->
+    <section id="harga" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">Rate Card 2026</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Investasi terbaik untuk visual brand Anda.</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Pricing Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12" id="pricing-tabs">
+                <button data-tab="graphic"
+                    class="pricing-tab-btn flex items-center gap-2 px-6 py-3 rounded-full font-bold transition duration-300 bg-brand-blue text-white shadow-lg shadow-brand-blue/30 scale-105">
+                    <i class="fa-solid fa-palette"></i> Desain Grafis
+                </button>
+                <button data-tab="video"
+                    class="pricing-tab-btn flex items-center gap-2 px-6 py-3 rounded-full font-bold transition duration-300 bg-slate-800 text-slate-400 hover:bg-slate-700">
+                    <i class="fa-solid fa-film"></i> Video Production
+                </button>
+                <button data-tab="ai"
+                    class="pricing-tab-btn flex items-center gap-2 px-6 py-3 rounded-full font-bold transition duration-300 bg-slate-800 text-slate-400 hover:bg-slate-700">
+                    <i class="fa-solid fa-microchip"></i> AI Video
+                </button>
+            </div>
+
+            <!-- Pricing Content -->
+            <div class="min-h-[500px]">
+                <!-- Graphic Content -->
+                <div id="pricing-graphic"
+                    class="pricing-content grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                    <!-- Digital -->
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                        <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Konten Digital</h4>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-start">
+                                <span>Desain Feed/Story</span>
+                                <span class="font-bold text-brand-blue">Rp 150.000</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span>Carousel (5 Slide)</span>
+                                <span class="font-bold text-brand-blue">Rp 350.000</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span>Thumbnail Video</span>
+                                <span class="font-bold text-brand-blue">Rp 100.000</span>
+                            </li>
+                        </ul>
+                        <p class="mt-4 text-xs text-slate-500">*Output JPG/PNG. Max 3x Revisi.</p>
+                    </div>
+
+                    <!-- Print -->
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                        <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Cetak & Event</h4>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-start">
+                                <span>Poster Event</span>
+                                <span class="font-bold text-brand-blue">Rp 250.000</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span>Banner/Spanduk</span>
+                                <span class="font-bold text-brand-blue">Rp 300.000</span>
+                            </li>
+                            <li class="flex justify-between items-start">
+                                <span>Merchandise</span>
+                                <span class="font-bold text-brand-blue">Rp 200.000</span>
+                            </li>
+                        </ul>
+                        <p class="mt-4 text-xs text-slate-500">*File Siap Cetak (CMYK).</p>
+                    </div>
+
+                    <!-- Monthly -->
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 border-brand-blue/50 bg-brand-blue/5 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 bg-brand-yellow text-black text-xs font-bold px-3 py-1 rounded-bl-lg">
+                            ⭐ BEST SELLER</div>
+                        <h4 class="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2">Paket Bulanan</h4>
+
+                        <div class="mb-6">
+                            <h5 class="font-bold text-brand-blue mb-1">UMKM Starter</h5>
+                            <p class="text-2xl font-extrabold text-white">Rp 1.200.000 <span
+                                    class="text-sm font-normal text-slate-400">/bln</span></p>
+                            <p class="text-sm text-slate-400 mt-1">10 Desain (Feed/Story) + Copywriting.</p>
+                        </div>
+
+                        <div>
+                            <h5 class="font-bold text-brand-purple mb-1">Business Pro</h5>
+                            <p class="text-2xl font-extrabold text-white">Rp 3.000.000 <span
+                                    class="text-sm font-normal text-slate-400">/bln</span></p>
+                            <p class="text-sm text-slate-400 mt-1">25 Desain + 1 Spanduk + Riset Hashtag.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Content (Hidden by default) -->
+                <div id="pricing-video"
+                    class="pricing-content grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in hidden">
+                    <!-- Shooting -->
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                        <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Jasa Shooting</h4>
+                        <p class="text-sm text-slate-400 mb-4">Dokumentasi Mobile (Poco X3 Pro - 1080p 60fps)</p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold text-white">Shooting Kegiatan</span>
+                                    <span class="font-bold text-brand-blue">Rp 350.000</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Max 6 jam, file mentah jika diminta.</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-semibold text-white">Tambahan Waktu</span>
+                                <span className="font-bold text-brand-blue">+Rp 50rb/jam</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Editing -->
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                        <h4 class="text-xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Jasa Editing</h4>
+                        <ul class="space-y-4">
+                            <li>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold text-white">Lvl 1: Dokumentasi</span>
+                                    <span class="font-bold text-brand-blue">Rp 150.000</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Cut-to-cut, Music No-Copyright.</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold text-white">Lvl 2: Highlight</span>
+                                    <span class="font-bold text-brand-blue">Rp 250.000</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Transisi, Teks, Color Standard.</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between">
+                                    <span class="font-semibold text-white">Lvl 3: Cinematic</span>
+                                    <span class="font-bold text-brand-blue">Rp 500.000</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Storytelling, Grading Premium, SFX.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Bundles -->
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 border-brand-purple/50 bg-brand-purple/5 relative">
+                        <div
+                            class="absolute top-0 right-0 bg-brand-yellow text-black text-xs font-bold px-3 py-1 rounded-bl-lg">
+                            PALING LARIS</div>
+                        <h4 class="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2">Paket Hemat (All-in)
+                        </h4>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h5 class="font-bold text-white">Konten Sosmed (UMKM)</h5>
+                                <p class="text-xl font-extrabold text-brand-blue">Rp 500.000</p>
+                                <p class="text-xs text-slate-400">Shooting 2-3 Jam + Edit Highlight.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white">Dokumentasi Acara</h5>
+                                <p class="text-xl font-extrabold text-brand-blue">Rp 600.000</p>
+                                <p class="text-xs text-slate-400">Shooting 6 Jam + Edit Dokumentasi.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white">Video Profil</h5>
+                                <p class="text-xl font-extrabold text-brand-blue">Rp 1.000.000</p>
+                                <p class="text-xs text-slate-400">Shooting Terkonsep + Edit Cinematic.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Content (Hidden by default) -->
+                <div id="pricing-ai"
+                    class="pricing-content grid md:grid-cols-2 gap-6 animate-fade-in max-w-4xl mx-auto hidden">
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300">
+                        <h4 class="text-2xl font-bold text-white mb-2">Premium Basic</h4>
+                        <p class="text-brand-blue font-extrabold text-3xl mb-4">Rp 500.000 <span
+                                class="text-sm font-normal text-slate-400">/video</span></p>
+                        <p class="text-slate-400 mb-6 text-sm">Satu Harga, Kualitas Terbaik. Cocok untuk Iklan &
+                            Personal Branding.</p>
+
+                        <ul class="space-y-3 text-sm mb-6">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Konsep & Naskah
+                                Kreatif</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Visual Sinematik
+                                (3-5 Scene)</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Voice Over & Audio
+                                Pro</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Full HD 1080p
+                                (9:16)</li>
+                        </ul>
+                        <a href="https://wa.me/6281268918360"
+                            class="block text-center bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-lg transition">Pesan
+                            Sekarang</a>
+                    </div>
+
+                    <div
+                        class="bg-slate-900/50 backdrop-blur-sm border rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 border-brand-blue/50 bg-gradient-to-br from-brand-blue/10 to-brand-purple/10">
+                        <div class="flex justify-between items-start">
+                            <h4 class="text-2xl font-bold text-white mb-2">Monthly Creator</h4>
+                            <span
+                                class="inline-block bg-brand-yellow text-brand-darker text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wide mb-2">HEMAT
+                                40%</span>
+                        </div>
+
+                        <p class="text-brand-purple font-extrabold text-3xl mb-4">Rp 3.000.000 <span
+                                class="text-sm font-normal text-slate-400">/bulan</span></p>
+                        <p class="text-slate-400 mb-6 text-sm">Solusi konten rutin. 10 Video kualitas Premium.</p>
+
+                        <ul class="space-y-3 text-sm mb-6">
+                            <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> 10 Video Spesifikasi
+                                Premium</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Prioritas Pengerjaan
+                                (VVIP)</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Konsistensi Branding
+                                Karakter</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Bonus Riset Ide &
+                                Kalender</li>
+                        </ul>
+                        <a href="https://wa.me/6281268918360"
+                            class="block text-center bg-brand-blue hover:bg-brand-blue/90 text-white py-2 rounded-lg transition">Langganan
+                            Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SOP (Accordion) -->
+    <section id="sop" class="py-20 bg-brand-darker">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">Syarat & Ketentuan (SOP)
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Harap dibaca sebelum memulai kerjasama.</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-purple mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="space-y-4" id="sop-container">
+                <!-- Javascript will populate this -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer id="kontak" class="bg-black py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-white mb-4">ACS | Anambas Creative Studio</h2>
+                <p class="text-slate-400 italic max-w-2xl mx-auto mb-8">
+                    "Kami hadir bukan sekadar sebagai vendor, melainkan sebagai mitra berpikir untuk menerjemahkan ide
+                    Anda menjadi karya visual yang bernyawa."
+                </p>
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="https://wa.me/6281268918360"
+                        class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-green-600 transition">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    </a>
+                    <a href="mailto:business.anambas.ai@gmail.com"
+                        class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-red-600 transition">
+                        <i class="fa-solid fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@anambas.ai.studio"
+                        class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-black border border-slate-700 hover:border-white transition">
+                        <i class="fa-brands fa-tiktok text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-sm text-slate-500 border-t border-slate-900 pt-8">
+                <p class="mb-2">Tarempa Selatan, Kepulauan Riau</p>
+                <p>Copyright © 2026 Anambas Creative Studio. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Hook -->
+    <script src="script.js"></script>
+</body>
+
+</html>
