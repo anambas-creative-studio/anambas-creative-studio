@@ -200,26 +200,27 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const target = btn.getAttribute('data-service');
             const targetContent = document.getElementById(`service-${target}`);
+            const isVisible = targetContent.style.display === 'block' || targetContent.classList.contains('show');
 
             // Toggle behavior: if already open, close it. Otherwise, open it.
-            if (!targetContent.classList.contains('hidden')) {
+            if (isVisible) {
                 // Close it with animation
                 targetContent.classList.remove('show');
                 targetContent.classList.add('hide');
 
                 // Wait for animation to finish before hiding
                 setTimeout(() => {
-                    targetContent.classList.add('hidden');
+                    targetContent.style.display = 'none';
                     targetContent.classList.remove('hide');
                 }, 400); // Match animation duration
             } else {
                 // Close all others first with animation
                 serviceContents.forEach(content => {
-                    if (!content.classList.contains('hidden')) {
+                    if (content.style.display === 'block' || content.classList.contains('show')) {
                         content.classList.remove('show');
                         content.classList.add('hide');
                         setTimeout(() => {
-                            content.classList.add('hidden');
+                            content.style.display = 'none';
                             content.classList.remove('hide');
                         }, 400);
                     }
@@ -227,7 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Open the clicked one with animation
                 setTimeout(() => {
-                    targetContent.classList.remove('hidden');
+                    targetContent.style.display = 'block';
+                    // Force reflow to ensure animation triggers
+                    void targetContent.offsetWidth;
                     targetContent.classList.add('show');
 
                     // Smooth scroll to the content after animation starts
