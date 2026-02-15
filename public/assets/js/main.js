@@ -29,30 +29,54 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach(service => {
           const card = document.createElement("div");
           card.className = "service-card";
-          card.innerHTML = `
-            <h3>${service.title}</h3>
-            <p class="subtitle">${service.subtitle}</p>
-            <p class="description">${service.description}</p>
-            <button class="service-btn">Lihat Detail</button>
-          `;
-          card.querySelector("button").onclick = () => {
+
+          // Create elements safely to prevent XSS
+          const h3 = document.createElement("h3");
+          h3.textContent = service.title;
+
+          const subtitle = document.createElement("p");
+          subtitle.className = "subtitle";
+          subtitle.textContent = service.subtitle;
+
+          const description = document.createElement("p");
+          description.className = "description";
+          description.textContent = service.description;
+
+          const button = document.createElement("button");
+          button.className = "service-btn";
+          button.textContent = "Lihat Detail";
+          button.onclick = () => {
             const slug = service.slug || service.id;
             window.location.href = `/services/${slug}.html`;
           };
+
+          card.appendChild(h3);
+          card.appendChild(subtitle);
+          card.appendChild(description);
+          card.appendChild(button);
           container.appendChild(card);
         });
     })
     .catch(err => {
       console.error("services.json error:", err);
-      container.innerHTML = `
-        <div class="service-card">
-          <h3>Gagal memuat layanan</h3>
-          <p class="subtitle">Cek cara menjalankan website</p>
-          <p class="description">
-            Jika kamu membuka file ini langsung (file://), browser biasanya memblokir <code>fetch()</code>.
-            Jalankan lewat web server (mis. VS Code Live Server) lalu refresh.
-          </p>
-        </div>
-      `;
+
+      const errorCard = document.createElement("div");
+      errorCard.className = "service-card";
+
+      const h3 = document.createElement("h3");
+      h3.textContent = "Gagal memuat layanan";
+
+      const subtitle = document.createElement("p");
+      subtitle.className = "subtitle";
+      subtitle.textContent = "Cek cara menjalankan website";
+
+      const description = document.createElement("p");
+      description.className = "description";
+      description.textContent = "Jika kamu membuka file ini langsung (file://), browser biasanya memblokir fetch(). Jalankan lewat web server (mis. VS Code Live Server) lalu refresh.";
+
+      errorCard.appendChild(h3);
+      errorCard.appendChild(subtitle);
+      errorCard.appendChild(description);
+      container.appendChild(errorCard);
     });
 });
