@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 5. Service Toggle Logic (NEW) ---
+    // --- 5. Service Toggle Logic with Animations ---
     const serviceToggleButtons = document.querySelectorAll('.service-toggle-btn');
     const serviceContents = document.querySelectorAll('.service-content');
 
@@ -203,19 +203,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Toggle behavior: if already open, close it. Otherwise, open it.
             if (!targetContent.classList.contains('hidden')) {
-                // Close it
-                targetContent.classList.add('hidden');
-            } else {
-                // Close all others first
-                serviceContents.forEach(content => content.classList.add('hidden'));
+                // Close it with animation
+                targetContent.classList.remove('show');
+                targetContent.classList.add('hide');
 
-                // Open the clicked one
-                targetContent.classList.remove('hidden');
-
-                // Smooth scroll to the content
+                // Wait for animation to finish before hiding
                 setTimeout(() => {
-                    targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
+                    targetContent.classList.add('hidden');
+                    targetContent.classList.remove('hide');
+                }, 400); // Match animation duration
+            } else {
+                // Close all others first with animation
+                serviceContents.forEach(content => {
+                    if (!content.classList.contains('hidden')) {
+                        content.classList.remove('show');
+                        content.classList.add('hide');
+                        setTimeout(() => {
+                            content.classList.add('hidden');
+                            content.classList.remove('hide');
+                        }, 400);
+                    }
+                });
+
+                // Open the clicked one with animation
+                setTimeout(() => {
+                    targetContent.classList.remove('hidden');
+                    targetContent.classList.add('show');
+
+                    // Smooth scroll to the content after animation starts
+                    setTimeout(() => {
+                        targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }, 450); // Slight delay to let others close first
             }
         });
     });
