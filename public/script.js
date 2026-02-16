@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 5. Service Toggle Logic with Animations ---
+    // --- 5. Service Toggle Logic with Enhanced Animations ---
     const serviceToggleButtons = document.querySelectorAll('.service-toggle-btn');
     const serviceContents = document.querySelectorAll('.service-content');
 
@@ -207,13 +207,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Close it with animation
                 targetContent.classList.remove('show');
                 targetContent.classList.add('hide');
+                btn.classList.remove('active');
 
                 // Wait for animation to finish before hiding
                 setTimeout(() => {
                     targetContent.style.display = 'none';
                     targetContent.classList.remove('hide');
-                }, 400); // Match animation duration
+                }, 500); // Match animation duration
             } else {
+                // Remove active state from all buttons
+                serviceToggleButtons.forEach(b => b.classList.remove('active'));
+
                 // Close all others first with animation
                 serviceContents.forEach(content => {
                     if (content.style.display === 'block' || content.classList.contains('show')) {
@@ -222,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             content.style.display = 'none';
                             content.classList.remove('hide');
-                        }, 400);
+                        }, 500);
                     }
                 });
 
@@ -232,12 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Force reflow to ensure animation triggers
                     void targetContent.offsetWidth;
                     targetContent.classList.add('show');
+                    btn.classList.add('active');
 
                     // Smooth scroll to the content after animation starts
                     setTimeout(() => {
                         targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 100);
-                }, 450); // Slight delay to let others close first
+                    }, 200);
+                }, 550); // Slight delay to let others close first
             }
         });
     });
