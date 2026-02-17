@@ -113,7 +113,7 @@
   </header>
 
   <!-- Portfolio Preview Carousel -->
-  <section class="portfolio-carousel-section">
+  <section class="portfolio-carousel-section" id="portfolio-carousel" style="display: none;">
     <div class="content-card" style="padding: 3rem 2rem;">
       <div class="portfolio-header">
         <h2>Portfolio Preview</h2>
@@ -427,6 +427,24 @@
   </style>
 
   <script>
+    // Gallery Toggle
+    const galleryToggleBtn = document.getElementById('gallery-toggle-btn');
+    const portfolioCarousel = document.getElementById('portfolio-carousel');
+
+    if (galleryToggleBtn && portfolioCarousel) {
+      galleryToggleBtn.addEventListener('click', () => {
+        if (portfolioCarousel.style.display === 'none') {
+          portfolioCarousel.style.display = 'block';
+          // Smooth scroll to carousel
+          setTimeout(() => {
+            portfolioCarousel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        } else {
+          portfolioCarousel.style.display = 'none';
+        }
+      });
+    }
+
     // Carousel functionality
     let currentIndex = 0;
     const items = document.querySelectorAll('.carousel-item');
