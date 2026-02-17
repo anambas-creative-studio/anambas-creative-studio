@@ -112,106 +112,198 @@
     </div>
   </header>
 
-  <!-- Gallery Preview (Collapsible) -->
-  <div id="gallery-preview" class="gallery-preview-container">
-    <div class="content-card" style="padding: 2rem;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-        <div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-            Portfolio Preview
-          </h3>
-          <p style="color: var(--muted); margin: 0;">Klik thumbnail untuk melihat ukuran penuh di tab baru</p>
-        </div>
-        <div style="display: flex; gap: 0.5rem;">
-          <button id="carousel-prev-btn" class="carousel-nav-btn" aria-label="Previous slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <button id="carousel-next-btn" class="carousel-nav-btn" aria-label="Next slide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
+  <!-- Horizontal Scroll Gallery -->
+  <article id="portfolio-gallery">
+    <header class="gallery-header">
+      <h2>Portfolio Preview</h2>
+      <p>Scroll ke bawah untuk melihat karya kami</p>
+    </header>
+
+    <section class="img-group-container">
+      <div>
+        <ul class="img-group">
+          <li class="img-container">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop"
+              alt="Social Media Design" draggable="false" oncontextmenu="return false;" />
+            <h3>Social Media</h3>
+          </li>
+          <li class="img-container">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop"
+              alt="Branding Design" draggable="false" oncontextmenu="return false;" />
+            <h3>Branding</h3>
+          </li>
+          <li class="img-container">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=800&auto=format&fit=crop"
+              alt="Print Design" draggable="false" oncontextmenu="return false;" />
+            <h3>Print Design</h3>
+          </li>
+          <li class="img-container">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop"
+              alt="Digital Ads" draggable="false" oncontextmenu="return false;" />
+            <h3>Digital Ads</h3>
+          </li>
+          <li class="img-container">
+            <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?q=80&w=800&auto=format&fit=crop"
+              alt="Large Format" draggable="false" oncontextmenu="return false;" />
+            <h3>Large Format</h3>
+          </li>
+          <li class="img-container">
+            <img src="https://images.unsplash.com/photo-1600132806608-231446b2e7af?q=80&w=800&auto=format&fit=crop"
+              alt="Packaging Design" draggable="false" oncontextmenu="return false;" />
+            <h3>Packaging</h3>
+          </li>
+        </ul>
       </div>
+    </section>
 
-      <div class="gallery-carousel-wrapper">
-        <div class="gallery-carousel-track" id="carousel-track">
-          <!-- Thumbnail 1 -->
-          <div class="gallery-thumbnail"
-            data-image="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200"
-            oncontextmenu="return false;">
-            <div class="thumbnail-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=300&auto=format&fit=crop"
-              alt="Feed Instagram Premium" draggable="false" oncontextmenu="return false;">
-            <div class="thumbnail-label">Social Media</div>
-          </div>
+    <footer class="gallery-footer">
+      <p>Karya-karya terbaik Anambas Creative Studio</p>
+    </footer>
+  </article>
+  <div class="progress"></div>
 
-          <!-- Thumbnail 2 -->
-          <div class="gallery-thumbnail"
-            data-image="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200"
-            oncontextmenu="return false;">
-            <div class="thumbnail-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=300&auto=format&fit=crop"
-              alt="Logo Identity Design" draggable="false" oncontextmenu="return false;">
-            <div class="thumbnail-label">Branding</div>
-          </div>
+  <style>
+    #portfolio-gallery {
+      width: 100%;
+      max-width: 100vw;
+      overflow: hidden;
+    }
 
-          <!-- Thumbnail 3 -->
-          <div class="gallery-thumbnail"
-            data-image="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=1200"
-            oncontextmenu="return false;">
-            <div class="thumbnail-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=300&auto=format&fit=crop"
-              alt="Poster Event Kreatif" draggable="false" oncontextmenu="return false;">
-            <div class="thumbnail-label">Print Design</div>
-          </div>
+    #portfolio-gallery h3 {
+      font-family: "Inter", "Segoe UI", sans-serif;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
 
-          <!-- Thumbnail 4 -->
-          <div class="gallery-thumbnail"
-            data-image="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200"
-            oncontextmenu="return false;">
-            <div class="thumbnail-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=300&auto=format&fit=crop"
-              alt="Thumbnail YouTube Atraktif" draggable="false" oncontextmenu="return false;">
-            <div class="thumbnail-label">Digital Ads</div>
-          </div>
+    .gallery-header,
+    .gallery-footer {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
 
-          <!-- Thumbnail 5 -->
-          <div class="gallery-thumbnail"
-            data-image="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?q=80&w=1200"
-            oncontextmenu="return false;">
-            <div class="thumbnail-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?q=80&w=300&auto=format&fit=crop"
-              alt="Spanduk & Banner" draggable="false" oncontextmenu="return false;">
-            <div class="thumbnail-label">Large Format</div>
-          </div>
+    .gallery-header h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.2;
+      margin: 0 0 1rem 0;
+      color: var(--text-primary);
+    }
 
-          <!-- Thumbnail 6 -->
-          <div class="gallery-thumbnail"
-            data-image="https://images.unsplash.com/photo-1600132806608-231446b2e7af?q=80&w=1200"
-            oncontextmenu="return false;">
-            <div class="thumbnail-overlay"></div>
-            <img src="https://images.unsplash.com/photo-1600132806608-231446b2e7af?q=80&w=300&auto=format&fit=crop"
-              alt="Packaging Design" draggable="false" oncontextmenu="return false;">
-            <div class="thumbnail-label">Packaging</div>
-          </div>
-        </div>
-      </div>
+    .gallery-header p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      margin: 0;
+    }
 
-      <!-- Carousel Indicators -->
-      <div class="carousel-indicators" id="carousel-indicators"></div>
-    </div>
-  </div>
+    .img-group-container {
+      height: 500vh;
+      position: relative;
+    }
+
+    .img-group-container>div {
+      position: sticky;
+      top: 0;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .img-group {
+      display: flex;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .img-container {
+      display: flex;
+      width: 100vw;
+      height: 100%;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .img-container h3 {
+      margin: 1.5rem 0 0 0;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      color: var(--text-primary);
+    }
+
+    .img-container img {
+      width: 90%;
+      max-width: 500px;
+      height: auto;
+      max-height: 60vh;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+    }
+
+    .gallery-footer p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      bottom: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      z-index: 100;
+    }
+
+    @media (max-width: 768px) {
+      .img-container img {
+        max-width: 85%;
+        max-height: 50vh;
+      }
+
+      .img-group-container {
+        height: 400vh;
+      }
+    }
+  </style>
+
+  <script type="module">
+    import { animate, scroll } from "https://cdn.jsdelivr.net/npm/motion@12.34.0/+esm"
+
+    const items = document.querySelectorAll(".img-container")
+
+    if (items.length > 0) {
+      // Animate gallery horizontally during vertical scroll
+      scroll(
+        animate(".img-group", {
+          transform: ["none", `translateX(-${items.length - 1}00vw)`],
+        }),
+        { target: document.querySelector(".img-group-container") }
+      )
+
+      // Progress bar representing gallery scroll
+      scroll(animate(".progress", { scaleX: [0, 1] }), {
+        target: document.querySelector(".img-group-container"),
+      })
+    }
+  </script>
 
   <main class="content-card">
     <section class="content-section reveal">
