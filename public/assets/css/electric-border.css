@@ -41,31 +41,25 @@
 }
 
 .eb-glow-1 {
-  background: radial-gradient(
-    circle at 50% 50%,
-    var(--electric-border-color, #5227FF) 0%,
-    transparent 60%
-  );
+  background: radial-gradient(circle at 50% 50%,
+      var(--electric-border-color, #5227FF) 0%,
+      transparent 60%);
   filter: blur(20px);
   animation-delay: 0s;
 }
 
 .eb-glow-2 {
-  background: radial-gradient(
-    circle at 50% 50%,
-    var(--electric-border-color, #5227FF) 0%,
-    transparent 50%
-  );
+  background: radial-gradient(circle at 50% 50%,
+      var(--electric-border-color, #5227FF) 0%,
+      transparent 50%);
   filter: blur(40px);
   animation-delay: 0.5s;
 }
 
 .eb-background-glow {
-  background: linear-gradient(
-    135deg,
-    rgba(82, 39, 255, 0.05) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(82, 39, 255, 0.05) 0%,
+      transparent 100%);
   opacity: 0.3;
 }
 
@@ -77,9 +71,12 @@
 }
 
 @keyframes electricPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.1;
   }
+
   50% {
     opacity: 0.3;
   }
@@ -89,8 +86,20 @@
 .price-card.electric-border-wrapper {
   border: none !important;
   box-shadow: none !important;
+  overflow: visible !important;
 }
 
 .price-card.electric-border-wrapper .eb-content {
   padding: inherit;
+}
+
+/* Critical: Allow overflow for parent containers */
+.pricing-cards {
+  overflow: visible !important;
+  padding: 60px 0 !important;
+  gap: 2rem !important;
+}
+
+.content-section {
+  overflow: visible !important;
 }
