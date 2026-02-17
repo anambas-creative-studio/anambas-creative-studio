@@ -7,8 +7,8 @@
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,24 +17,29 @@
     flex-shrink: 0;
 }
 
-.carousel-nav-btn:hover {
+.carousel-nav-btn:hover:not(:disabled) {
     background: var(--accent);
     border-color: var(--accent);
     box-shadow: 0 4px 12px var(--glow);
     transform: scale(1.05);
 }
 
-.carousel-nav-btn:active {
+.carousel-nav-btn:active:not(:disabled) {
     transform: scale(0.95);
 }
 
+.carousel-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .carousel-nav-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     color: var(--text);
 }
 
-.carousel-nav-btn:hover svg {
+.carousel-nav-btn:hover:not(:disabled) svg {
     color: white;
 }
 
@@ -65,24 +70,24 @@
     background: var(--muted);
 }
 
-/* Update thumbnail for carousel */
+/* Update thumbnail for carousel - MINI SIZE */
 .gallery-carousel-track .gallery-thumbnail {
     flex-shrink: 0;
-    width: 280px;
-    height: 210px;
+    width: 120px;
+    height: 90px;
     aspect-ratio: auto;
 }
 
 @media (min-width: 640px) {
     .gallery-carousel-track .gallery-thumbnail {
-        width: 320px;
-        height: 240px;
+        width: 140px;
+        height: 105px;
     }
 }
 
 @media (min-width: 1024px) {
     .gallery-carousel-track .gallery-thumbnail {
-        width: 360px;
-        height: 270px;
+        width: 150px;
+        height: 112px;
     }
 }

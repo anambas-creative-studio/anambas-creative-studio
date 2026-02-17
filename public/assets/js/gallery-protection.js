@@ -1,16 +1,15 @@
-// Gallery Carousel with Auto-Scroll and Protection
+// Gallery Carousel with Manual Navigation (Prev/Next) and Protection
 document.addEventListener('DOMContentLoaded', () => {
     const galleryToggleBtn = document.getElementById('gallery-toggle-btn');
     const galleryPreview = document.getElementById('gallery-preview');
     const carouselTrack = document.getElementById('carousel-track');
+    const carouselPrevBtn = document.getElementById('carousel-prev-btn');
     const carouselNextBtn = document.getElementById('carousel-next-btn');
     const carouselIndicatorsContainer = document.getElementById('carousel-indicators');
     const galleryThumbnails = document.querySelectorAll('.gallery-thumbnail');
 
     let currentIndex = 0;
-    let autoScrollInterval = null;
-    const autoScrollDelay = 3000; // 3 seconds
-    const thumbnailsPerView = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+    const thumbnailsPerView = window.innerWidth >= 1024 ? 6 : window.innerWidth >= 640 ? 4 : 3;
     const totalThumbnails = galleryThumbnails.length;
     const totalSlides = Math.ceil(totalThumbnails / thumbnailsPerView);
 
@@ -36,37 +35,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Update Button States
+    function updateButtonStates() {
+        if (carouselPrevBtn) {
+            carouselPrevBtn.disabled = currentIndex === 0;
+        }
+
+        if (carouselNextBtn) {
+            carouselNextBtn.disabled = currentIndex === totalSlides - 1;
+        }
+    }
+
     // Go to Specific Slide
     function goToSlide(index) {
         if (!carouselTrack) return;
 
         currentIndex = index;
-        const thumbnailWidth = galleryThumbnails[0]?.offsetWidth || 280;
+        const thumbnailWidth = galleryThumbnails[0]?.offsetWidth || 120;
         const gap = window.innerWidth >= 1024 ? 32 : window.innerWidth >= 640 ? 28 : 24;
         const slideWidth = (thumbnailWidth + gap) * thumbnailsPerView;
         const offset = -slideWidth * currentIndex;
 
         carouselTrack.style.transform = `translateX(${offset}px)`;
         updateIndicators();
+        updateButtonStates();
     }
 
     // Next Slide
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        goToSlide(currentIndex);
+        if (currentIndex < totalSlides - 1) {
+            currentIndex++;
+            goToSlide(currentIndex);
+        }
     }
 
-    // Start Auto-Scroll
-    function startAutoScroll() {
-        stopAutoScroll();
-        autoScrollInterval = setInterval(nextSlide, autoScrollDelay);
-    }
-
-    // Stop Auto-Scroll
-    function stopAutoScroll() {
-        if (autoScrollInterval) {
-            clearInterval(autoScrollInterval);
-            autoScrollInterval = null;
+    // Previous Slide
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            goToSlide(currentIndex);
         }
     }
 
@@ -82,11 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 buttonText.textContent = isActive ? 'Close Gallery' : 'Gallery';
             }
 
-            // Start/Stop auto-scroll
             if (isActive) {
                 createIndicators();
                 goToSlide(0);
-                startAutoScroll();
 
                 setTimeout(() => {
                     galleryPreview.scrollIntoView({
@@ -94,19 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         block: 'nearest'
                     });
                 }, 100);
-            } else {
-                stopAutoScroll();
             }
         });
     }
 
+    // Prev Button Click
+    if (carouselPrevBtn) {
+        carouselPrevBtn.addEventListener('click', prevSlide);
+    }
+
     // Next Button Click
     if (carouselNextBtn) {
-        carouselNextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopAutoScroll(); // Stop auto-scroll when user manually navigates
-            setTimeout(startAutoScroll, 5000); // Resume after 5 seconds
-        });
+        carouselNextBtn.addEventListener('click', nextSlide);
     }
 
     // Handle Thumbnail Clicks - Open in New Tab
@@ -131,10 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             return false;
         });
-
-        // Pause auto-scroll on hover
-        thumbnail.addEventListener('mouseenter', stopAutoScroll);
-        thumbnail.addEventListener('mouseleave', startAutoScroll);
     });
 
     // Additional anti-download protection for images
@@ -165,6 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Keyboard navigation (Arrow keys)
+    document.addEventListener('keydown', (e) => {
+        if (galleryPreview.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            }
+        }
+    });
 
     // Responsive: Recalculate on window resize
     let resizeTimeout;
