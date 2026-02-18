@@ -1,0 +1,113 @@
+/* ========== ACS LANDING PAGE - DARK THEME ========== */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Body dot grid overlay */
+body {
+    position: relative;
+}
+
+/* ========== NAVBAR ========== */
+#navbar.scrolled {
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== REVEAL ANIMATIONS ========== */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== SERVICE CARD SHINE EFFECT ========== */
+.group:hover::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -30%;
+    width: 60%;
+    height: 180%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: translateX(-120%) rotate(12deg);
+    animation: cardShine 0.8s ease forwards;
+}
+
+@keyframes cardShine {
+    to {
+        transform: translateX(350%) rotate(12deg);
+    }
+}
+
+/* ========== PORTFOLIO IMAGE HOVER ========== */
+#portfolio-grid .aspect-square img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+#portfolio-grid .aspect-square:hover img {
+    transform: scale(1.1);
+}
+
+/* ========== COUNTDOWN GLOW ========== */
+#countdown-seconds {
+    animation: countdownPulse 1s ease-in-out infinite;
+}
+
+@keyframes countdownPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ========== RESPONSIVE FINE-TUNING ========== */
+@media (max-width: 640px) {
+    .font-heading {
+        letter-spacing: -0.02em;
+    }
+}
+
+/* ========== SELECTION COLOR ========== */
+::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: #ffffff;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.5);
+}
