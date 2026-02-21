@@ -90,15 +90,19 @@
       cara menerjemahkan visi Anda menjadi visual yang <em>bekerja</em>.
     </p>
     <div class="hero-cta">
-      <a class="btn primary wa-btn" href="#"
+      <a class="btn primary grafisatu-btn" href="#"
         data-wa-message="Halo, saya tertarik bekerja sama untuk layanan Design Graphic (ACS).">
         <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path
             d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
         </svg>
-        <span>WhatsApp</span>
+        <span>FREE KONSULTASI</span>
       </a>
-      <a class="btn" href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20Design%20Graphic%20(ACS)">Email</a>
+      <a class="btn" href="#rate-card"
+        onclick="document.querySelector('.rate-head').scrollIntoView({behavior: 'smooth'})">
+        <span>DAFTAR HARGA</span>
+        <span style="font-size:1.2rem; transform:rotate(-90deg)">&rarr;</span>
+      </a>
       <button class="btn" id="gallery-toggle-btn" aria-label="Toggle Gallery">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round"
@@ -314,6 +318,130 @@
       color: #00ffaa;
       text-decoration: none;
       cursor: pointer;
+    }
+
+    /* Grafisatu-inspired refined UI */
+    .grafisatu-btn {
+      background: #7b61ff !important;
+      background: linear-gradient(135deg, #8168ff 0%, #6144f8 100%) !important;
+      border: none !important;
+      color: white !important;
+      box-shadow: 0 10px 24px -10px rgba(123, 97, 255, 0.6) !important;
+      font-weight: 800 !important;
+      border-radius: 12px !important;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .grafisatu-btn:hover {
+      box-shadow: 0 15px 30px -10px rgba(123, 97, 255, 0.8) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Floating WA Button */
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      z-index: 1000;
+      background: #25D366;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: bounceWa 2s infinite;
+    }
+
+    .floating-wa svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+
+    .floating-wa:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.6);
+      animation: none;
+    }
+
+    @keyframes bounceWa {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* Mobile specific refinements */
+    @media (max-width: 760px) {
+
+      /* Keep 2 columns for feature grid on mobile to mimic Grafisatu */
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      .feature {
+        padding: 14px 10px !important;
+        text-align: center;
+      }
+
+      .feature-icon {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: 38px !important;
+        height: 38px !important;
+        margin: 0 auto 8px auto !important;
+        color: #7b61ff !important;
+        /* Purple icons */
+      }
+
+      .feature-icon svg {
+        width: 30px !important;
+        height: 30px !important;
+      }
+
+      /* Simplify feature typography for mobile */
+      .feature h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 4px !important;
+      }
+
+      .feature p {
+        font-size: 0.78rem !important;
+        line-height: 1.4 !important;
+      }
+
+      /* Hero typography refinement */
+      .service-hero h1 {
+        font-size: 1.8rem !important;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem !important;
+        opacity: 0.9;
+      }
+
+      .floating-wa {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 16px;
+      }
+
+      .floating-wa svg {
+        width: 28px;
+        height: 28px;
+      }
     }
   </style>
 
@@ -766,6 +894,15 @@
   <script src="/assets/js/whatsapp.js"></script>
   <script src="/assets/js/gallery-protection.js"></script>
   <script src="/assets/js/click-spark.js"></script>
+
+  <!-- Floating WA -->
+  <a href="#" class="floating-wa" data-wa-message="Halo ACS, saya ingin konsultasi layanan Design Graphic."
+    aria-label="Chat WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
+    </svg>
+  </a>
 </body>
 
 </html>
