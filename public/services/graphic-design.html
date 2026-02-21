@@ -344,20 +344,22 @@
       background: var(--bg-secondary);
       border: 2px solid var(--border-color);
       border-radius: 20px;
-      padding: 2rem;
+      padding: 1.5rem;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 0.3;
+      opacity: 0;
+      visibility: hidden;
       transform: scale(0.8) translateX(0);
       pointer-events: none;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .carousel-item.active {
       opacity: 1;
+      visibility: visible;
       transform: scale(1) translateX(0);
       z-index: 10;
       border-color: #00ffaa;
@@ -367,43 +369,44 @@
 
     .carousel-item.prev {
       opacity: 0.5;
+      visibility: visible;
       transform: scale(0.85) translateX(-350px);
       z-index: 5;
     }
 
     .carousel-item.next {
       opacity: 0.5;
+      visibility: visible;
       transform: scale(0.85) translateX(350px);
       z-index: 5;
     }
 
     .carousel-item.far-left {
       opacity: 0.2;
+      visibility: visible;
       transform: scale(0.7) translateX(-600px);
       z-index: 1;
     }
 
     .carousel-item.far-right {
       opacity: 0.2;
+      visibility: visible;
       transform: scale(0.7) translateX(600px);
       z-index: 1;
     }
 
     .item-number {
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      opacity: 0.3;
+      display: none;
     }
 
     .carousel-item.active .item-number {
-      color: #00ffaa;
-      opacity: 1;
+      display: none;
     }
 
     .item-image {
-      width: 220px;
-      height: 220px;
+      width: 100%;
+      flex-grow: 1;
+      min-height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -436,6 +439,7 @@
       font-weight: 600;
       color: var(--text-primary);
       text-align: center;
+      margin-top: auto;
     }
 
     .carousel-nav {
@@ -477,6 +481,7 @@
       .carousel-item.next {
         transform: scale(0.85) translateX(280px);
       }
+
 
       .item-image {
         width: 160px;
