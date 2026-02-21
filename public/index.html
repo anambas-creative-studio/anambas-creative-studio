@@ -114,6 +114,94 @@
       ]
     }
     </script>
+    <style>
+        /* Floating WA Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 24px;
+            right: 20px;
+            z-index: 1000;
+            background: #25D366;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounceWa 2s infinite;
+        }
+
+        .floating-wa svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        @keyframes bounceWa {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Mobile specific refinements mimicking Grafisatu */
+        @media (max-width: 760px) {
+
+            /* Keep 2 columns for 'Keunggulan' grid on mobile */
+            #keunggulan .grid-cols-1 {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 12px !important;
+            }
+
+            #keunggulan .group {
+                padding: 16px 12px !important;
+                text-align: center;
+            }
+
+            #keunggulan .w-20.h-20 {
+                width: 48px !important;
+                height: 48px !important;
+                margin: 0 auto 12px auto !important;
+            }
+
+            /* Simplify feature typography for mobile */
+            #keunggulan h3 {
+                font-size: 0.9rem !important;
+                margin-bottom: 6px !important;
+            }
+
+            #keunggulan p {
+                font-size: 0.75rem !important;
+                line-height: 1.4 !important;
+            }
+
+            /* Floating WA Mobile Size */
+            .floating-wa {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 16px;
+            }
+
+            .floating-wa svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-brand-darker text-white font-sans antialiased">
@@ -226,7 +314,7 @@
                     <!-- Dual CTA -->
                     <div class="flex flex-col sm:flex-row gap-4 reveal-up" style="animation-delay:0.3s">
                         <a href="https://wa.me/6281268918360?text=Halo%2C%20saya%20ingin%20konsultasi%20gratis%20tentang%20layanan%20ACS"
-                            class="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold text-lg shadow-2xl shadow-green-500/30 hover:shadow-green-500/50 hover:-translate-y-1 transition-all duration-300">
+                            class="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-br from-[#8168ff] to-[#6144f8] text-white font-extrabold text-lg shadow-2xl shadow-[#7b61ff]/40 hover:shadow-[#7b61ff]/60 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide">
                             <i class="fab fa-whatsapp text-2xl"></i> FREE Konsultasi
                         </a>
                         <a href="#layanan"
@@ -1177,6 +1265,15 @@
 
     <!-- ========== SCRIPTS ========== -->
     <script src="assets/js/landing.js?v=1"></script>
+
+    <!-- Floating WA -->
+    <a href="https://wa.me/6281268918360?text=Halo%20ACS,%20saya%20ingin%20konsultasi%20layanan." class="floating-wa"
+        aria-label="Chat WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
+        </svg>
+    </a>
 </body>
 
 </html>
