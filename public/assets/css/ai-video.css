@@ -359,12 +359,25 @@ html {
   font-size: 24px;
   margin-bottom: 16px;
   transition: transform 0.3s ease;
+  overflow: hidden;
 
   /* Gradien subtle dan slight glow (Blue/Cyan premium theme applied to ALL) */
   background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(30, 58, 138, 0.2));
   color: var(--premium-blue-400);
   border: 1px solid rgba(96, 165, 250, 0.2);
   box-shadow: 0 0 15px rgba(96, 165, 250, 0.1);
+}
+
+.iso-icon {
+  width: 140%;
+  /* Zoom in since images naturally have padding */
+  height: 140%;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  /* Removes the pure black background seamlessly */
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5));
+  /* Adds deep cyan 3D aura */
+  transition: transform 0.4s ease;
 }
 
 /* 5. Typography Mobile Inside Card */
