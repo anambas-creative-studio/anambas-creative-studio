@@ -56,15 +56,219 @@
     "url": "https://anambas-creative-studio.vercel.app/services/ai-video.html"
   }
   </script>
+
+  <style>
+    /* Enhanced Navigation Styles */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    .enhanced-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(11, 18, 32, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-brand:hover {
+      color: #3b82f6;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--muted, #9ca3af);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: 1rem;
+    }
+
+    .nav-btn-secondary {
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nav-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-btn-primary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      background: #25D366;
+      /* WhatsApp Green */
+      color: #111;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nav-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+      background: #20b858;
+    }
+
+    .wa-icon-small {
+      width: 16px;
+      height: 16px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Responsive Styles for Mobile/Tablet */
+    @media (max-width: 1080px) {
+      .enhanced-nav {
+        padding: 1rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(11, 18, 32, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-menu.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      .nav-actions {
+        margin-left: 0;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .nav-btn-primary,
+      .nav-btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 0.85rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <nav class="top-nav">
-    <a class="back-link" href="/">← Kembali</a>
-    <div class="brand-mini">
-      <span class="brand-name">Anambas Creative Studio</span>
-      <span class="brand-tagline">Design. Video. AI.</span>
+  <nav class="enhanced-nav" id="navbar">
+    <a class="nav-brand" href="/">
+      <i class="fa-solid fa-arrow-left" style="font-size: 0.9rem; margin-right: 4px;"></i> ACS
+    </a>
+
+    <button class="menu-toggle" aria-label="Toggle menu" id="mobileMenuBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="nav-menu" id="navMenu">
+      <a href="#portfolio" class="nav-link">Portofolio Video AI</a>
+      <a href="#workflow" class="nav-link">Workflow</a>
+      <a href="#pricing" class="nav-link">Harga & Info</a>
+      <a href="#testimonials" class="nav-link">Testimoni</a>
+
+      <div class="nav-actions">
+        <a class="nav-btn-secondary"
+          href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production">
+          Email
+        </a>
+        <a class="nav-btn-primary"
+          href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video">
+          <svg class="wa-icon-small" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
+          </svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -95,7 +299,7 @@
   <main class="content-card">
 
     <!-- Portofolio / Visual -->
-    <section class="content-section">
+    <section class="content-section" id="portfolio">
       <h2>Portofolio Video AI Kami</h2>
       <p style="color: var(--muted); margin-bottom: 2rem;">Bukti nyata kualitas visual, konsistensi karakter, dan
         storytelling yang kami hasilkan untuk berbagai brand. <a href="https://www.tiktok.com/@anambas.ai.studio"
@@ -221,7 +425,7 @@
       </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section" id="workflow">
       <h2>Ai Video Production Workflow</h2>
       <ol class="timeline workflow-timeline">
         <li>
@@ -274,7 +478,7 @@
         Export</div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section" id="pricing">
       <h2>Harga (Valid mulai 2026)</h2>
       <div class="pricing-cards">
         <div class="price-card highlight"
@@ -318,7 +522,7 @@
     </section>
 
     <!-- Testimonials / Social Proof -->
-    <section class="content-section">
+    <section class="content-section" id="testimonials">
       <h2>Apa Kata Klien Kami?</h2>
       <div
         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
@@ -471,6 +675,32 @@
   </footer>
   <script src="/assets/js/whatsapp.js"></script>
   <script src="/assets/js/click-spark.js"></script>
+  <script>
+    // Hamburger Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (navMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+      } else {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+      });
+    });
+  </script>
   <style>
     @keyframes pulse {
       0% {
