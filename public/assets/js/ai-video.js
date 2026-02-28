@@ -85,3 +85,30 @@ if (stickyWrapper) {
 
     observer.observe(stickyWrapper);
 }
+
+// ----------------------------------------------------
+// Premium Fade-Up Observer for "Mengapa Harus Kami"
+// ----------------------------------------------------
+const fadeUpElements = document.querySelectorAll('.fade-up-item');
+
+if (fadeUpElements.length > 0) {
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Menghentikan pantauan setelah kartu masuk viewport
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    });
+
+    fadeUpElements.forEach((el, index) => {
+        // Stagger inline CSS delay agar memuncul secara beruntun (mengalir)
+        el.style.transitionDelay = `${index * 120}ms`;
+        fadeObserver.observe(el);
+    });
+}
