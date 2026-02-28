@@ -39,6 +39,16 @@
   <link rel="stylesheet" href="/assets/css/service.css" />
   <link rel="stylesheet" href="/assets/css/ai-video.css" />
 
+  <style>
+    /* HOTFIX: Pastikan In-Page Nav bisa diklik di atas pseudo-element body / hero container */
+    .page-sticky-nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 9999 !important;
+      pointer-events: auto !important;
+    }
+  </style>
+
   <!-- Structured Data (Schema.org) -->
   <script type="application/ld+json">
   {
@@ -582,6 +592,32 @@
         }
       });
     }
-</body >
 
-</html >
+    // Toggle mobile menu visibility
+    if (inpageToggleBtn && inpageNavMenu) {
+      inpageToggleBtn.addEventListener('click', () => {
+        inpageNavMenu.classList.toggle('show');
+        const icon = inpageToggleBtn.querySelector('i');
+        if (inpageNavMenu.classList.contains('show')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        } else {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
+      });
+    }
+
+    // Intersection Observer to detect when the wrapper sticks to the top
+    if (stickyWrapper) {
+      const observer = new IntersectionObserver(
+        ([e]) => { e.target.classList.toggle('is-sticky', e.intersectionRatio < 1) },
+        { threshold: [1] }
+      );
+
+      observer.observe(stickyWrapper);
+    }
+  </script>
+</body>
+
+</html>
