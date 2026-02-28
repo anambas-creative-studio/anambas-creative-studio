@@ -79,18 +79,18 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 100px;
-      /* Pill shape initially */
       padding: 0.5rem 1rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem;
       max-width: fit-content;
       margin: 0 auto;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      /* Untuk dropdown menempel di div ini */
     }
 
-    /* When it becomes sticky at the top, we want it full width or flush */
     .page-sticky-nav-wrapper.is-sticky .page-sticky-nav {
       max-width: 100%;
       border-radius: 0;
@@ -99,67 +99,225 @@
       border-top: none;
       padding: 0.75rem 2rem;
       background: rgba(11, 18, 32, 0.95);
+      justify-content: center;
     }
 
     .inpage-nav-menu {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
-      margin-left: 1rem;
+      gap: 0.5rem;
     }
 
-    .inpage-nav-link {
+    /* Seragamkan Tampilan Tombol Navigasi / Tab */
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
       color: var(--muted, #9ca3af);
-      text-decoration: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 100px;
       font-size: 0.85rem;
       font-weight: 500;
-      transition: color 0.3s ease;
+      cursor: pointer;
+      transition: all 0.3s ease;
       white-space: nowrap;
+      font-family: inherit;
     }
 
-    .inpage-nav-link:hover {
+    .tab-btn:hover {
       color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    .inpage-btn-wa {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background-color: #25D366;
-      color: #111;
-      padding: 0.5rem 1.25rem;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      flex-shrink: 0;
-    }
-
-    .inpage-btn-wa:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    }
-
-    .inpage-btn-email {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      padding: 0.5rem 1.25rem;
-      border-radius: 100px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    .tab-btn.active {
+      color: #ffffff;
+      background: rgba(59, 130, 246, 0.15);
+      /* Soft primary tint */
+      border-color: rgba(59, 130, 246, 0.3);
       font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
-      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
     }
 
-    .inpage-btn-email:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.4);
+    /* Tombol Utama Layanan Kontak di Ujung Kanan */
+    .btn-contact-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: #ffffff;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+      font-family: inherit;
+      margin-left: 0.5rem;
+    }
+
+    .btn-contact-trigger:hover,
+    .btn-contact-trigger.active {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Panel Dropdown Kontak */
+    .contact-dropdown-panel {
+      position: absolute;
+      top: calc(100% + 15px);
+      /* Menempel di bawah navbar sedikit berjarak */
+      right: 1rem;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      width: 320px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1001;
+    }
+
+    .contact-dropdown-panel.show {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Segitiga panah ke atas untuk Dropdown */
+    .contact-dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 2rem;
+      width: 12px;
+      height: 12px;
+      background: #0f172a;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg);
+    }
+
+    .dropdown-header {
+      font-size: 0.9rem;
+      color: var(--muted, #9ca3af);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 0.5rem;
+    }
+
+    .dropdown-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .dropdown-link-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      transition: background 0.2s;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .dropdown-link-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .dropdown-link-item.wa-item {
+      background: rgba(37, 211, 102, 0.1);
+      color: #25D366;
+      border: 1px solid rgba(37, 211, 102, 0.2);
+    }
+
+    .dropdown-link-item.wa-item:hover {
+      background: rgba(37, 211, 102, 0.2);
+    }
+
+    /* Container Sistem Tab */
+    .tab-content-container {
+      position: relative;
+    }
+
+    .tab-pane {
+      display: none;
+      /* Disembunyikan secara default */
+      animation: fadeInSlideUp 0.5s ease forwards;
+    }
+
+    /* Tab yang aktif */
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeInSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Desain Khusus Section 'Mengapa Harus Kami' */
+    .why-us-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .why-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+
+    .why-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #3b82f6;
+    }
+
+    .why-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .why-desc {
+      color: var(--muted, #9ca3af);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .highlight-text {
+      color: #fbbf24;
+      font-weight: 600;
     }
 
     .inpage-toggle {
@@ -176,27 +334,34 @@
     /* Responsive */
     @media (max-width: 900px) {
       .page-sticky-nav {
-        max-width: 100%;
+        max-width: calc(100% - 2rem);
         border-radius: 12px;
         flex-wrap: wrap;
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 1rem;
+        margin: 0 1rem;
       }
 
       .page-sticky-nav-wrapper.is-sticky .page-sticky-nav {
         border-radius: 0;
+        margin: 0;
+        padding: 0.75rem 1rem;
       }
 
       .inpage-toggle {
         display: block;
       }
 
+      .btn-contact-trigger {
+        margin-left: auto;
+        /* Push contact button to the right alongside hamburger */
+      }
+
       .inpage-nav-menu {
         display: none;
-        /* Hide standard links by default on mobile */
         width: 100%;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        align-items: stretch;
+        gap: 0.5rem;
         margin-left: 0;
         margin-top: 1rem;
         padding-top: 1rem;
@@ -208,10 +373,15 @@
         animation: fadeInDown 0.3s ease forwards;
       }
 
-      .inpage-btn-wa,
-      .inpage-btn-email {
-        font-size: 0.85rem;
-        padding: 0.4rem 1rem;
+      .tab-btn {
+        text-align: left;
+        padding: 0.75rem 1rem;
+      }
+
+      .contact-dropdown-panel {
+        width: calc(100vw - 2rem);
+        right: 1rem;
+        left: 1rem;
       }
     }
 
@@ -250,409 +420,448 @@
         style="display:inline-block; padding: 6px 16px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 20px; color: #ef4444; font-size: 0.95rem; font-weight: bold; animation: pulse 2s infinite;">🔥
         Slot bulanan terbatas — hanya menerima 3 klien/bulan untuk menjaga kualitas premium.</span>
     </p>
-    <!-- In-Page Sticky Nav -->
+    <!-- In-Page Sticky Nav (Sistem Tab) -->
     <div class="page-sticky-nav-wrapper" id="stickyNavWrapper">
       <div class="page-sticky-nav">
-        <!-- CTA Utama Selalu Kelihatan -->
-        <a class="inpage-btn-wa"
-          href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video">
-          <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor"
-              d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
-          </svg>
-          WhatsApp
-        </a>
-
-        <a class="inpage-btn-email"
-          href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production">
-          Email
-        </a>
 
         <!-- Hamburger Icon untuk mobile -->
         <button class="inpage-toggle" id="inpageToggleBtn" aria-label="Toggle menu">
           <i class="fa-solid fa-bars"></i>
         </button>
 
-        <!-- Menu Links -->
+        <!-- Menu Tab Links -->
         <div class="inpage-nav-menu" id="inpageNavMenu">
-          <a href="#portfolio" class="inpage-nav-link">Portofolio Video AI</a>
-          <a href="#workflow" class="inpage-nav-link">Workflow</a>
-          <a href="#pricing" class="inpage-nav-link">Harga & Info</a>
-          <a href="#testimonials" class="inpage-nav-link">Testimoni</a>
+          <button class="tab-btn active" data-target="tab-mengapa">Mengapa Harus Kami?</button>
+          <button class="tab-btn" data-target="tab-workflow">Workflow</button>
+          <button class="tab-btn" data-target="tab-portfolio">Portofolio Video AI</button>
+          <button class="tab-btn" data-target="tab-pricing">Harga & Info</button>
+        </div>
+
+        <!-- Tombol Terpadu Layanan Kontak -->
+        <button class="btn-contact-trigger" id="contactTriggerBtn">
+          <i class="fa-solid fa-headset"></i> Layanan Kontak
+        </button>
+
+        <!-- Panel Dropdown Kontak -->
+        <div class="contact-dropdown-panel" id="contactDropdown">
+          <div class="dropdown-header">Hubungi Studio Kami</div>
+          <div class="dropdown-links">
+            <a href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video"
+              class="dropdown-link-item wa-item" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i>
+              WhatsApp (Respon Cepat)
+            </a>
+            <a href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production"
+              class="dropdown-link-item">
+              <i class="fa-regular fa-envelope" style="font-size: 1.25rem; width: 20px; text-align: center;"></i>
+              Email Bisnis
+            </a>
+            <a href="https://www.tiktok.com/@anambas.ai.studio" class="dropdown-link-item" target="_blank"
+              rel="noopener">
+              <i class="fa-brands fa-tiktok" style="font-size: 1.25rem; width: 20px; text-align: center;"></i>
+              TikTok @anambas.ai.studio
+            </a>
+            <a href="#" class="dropdown-link-item">
+              <i class="fa-brands fa-instagram" style="font-size: 1.25rem; width: 20px; text-align: center;"></i>
+              Instagram
+            </a>
+            <a href="#" class="dropdown-link-item">
+              <i class="fa-brands fa-youtube" style="font-size: 1.25rem; width: 20px; text-align: center;"></i>
+              YouTube Channel
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="content-card">
+  <!-- Container Utama Untuk Tabs -->
+  <main class="content-card tab-content-container">
 
-    <!-- Portofolio / Visual -->
-    <section class="content-section" id="portfolio">
-      <h2>Portofolio Video AI Kami</h2>
-      <p style="color: var(--muted); margin-bottom: 2rem;">Bukti nyata kualitas visual, konsistensi karakter, dan
-        storytelling yang kami hasilkan untuk berbagai brand. <a href="https://www.tiktok.com/@anambas.ai.studio"
-          target="_blank" style="color: #60a5fa; text-decoration: underline;">Lihat lebih banyak di TikTok</a>.</p>
+    <!-- Tab 1: Mengapa Harus Kami? (DEFAULT ACTIVE) -->
+    <div class="tab-pane active" id="tab-mengapa">
+      <section class="content-section">
+        <h2>Mengapa Harus Video AI dari Kami?</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Pendekatan produksi video masa depan yang menyelesaikan
+          permasalahan tradisional Anda.</p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem;">
+        <div class="why-us-grid">
+          <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="why-title">Beban Produksi Tradisional</div>
+            <div class="why-desc">
+              Menyewa kamera, lighting, studio, talent, dan kru lapangan memakan biaya sangat tinggi dan memakan waktu
+              perencanaan berminggu-minggu. Seringkali <span class="highlight-text">anggaran membengkak</span>.
+            </div>
+          </div>
 
-        <!-- Video 1 -->
-        <div
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
-          onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
-          onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7590430944323063056', '_blank')">
+          <div class="why-card" style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05);">
+            <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="why-title">Solusi Cepat & Efisien ACS</div>
+            <div class="why-desc">
+              Hanya bermodal naskah (konsep), tim ACS mengeksekusi visual berkelas sinematik dari layar komputer. <span
+                class="highlight-text">Pangkas biaya operasional Anda hingga 70%</span> dengan proses pengerjaan kilat
+              1-2 hari.
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="why-title">Karakter & Storytelling Konsisten</div>
+            <div class="why-desc">
+              Tantangan terbesar AI adalah menjaga agar wajah tidak "berubah-ubah". Kami menggunakan teknik kontrol
+              *Start-End Frame* agar <span class="highlight-text">karakter utama brand Anda konsisten 100%</span> dari
+              awal hingga akhir video.
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon"><i class="fa-solid fa-film"></i></div>
+            <div class="why-title">Kualitas Visual Sinematik</div>
+            <div class="why-desc">
+              Visual yang kami hasilkan bukan gambar kaku, melainkan *motion picture* dengan *lighting* studio, tekstur
+              realistis, dan pergerakan kamera halus format resolusi 1080p super tajam.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Tab 2: Workflow -->
+    <div class="tab-pane" id="tab-workflow">
+      <section class="content-section" id="workflow">
+        </ol>
+        <div class="callout info">Flow ringkas: Ide → Prompt → Frame → Motion → Generate → VO → Music → Edit → Enhance →
+          Export</div>
+      </section>
+    </div>
+
+    <!-- Tab 3: Portofolio -->
+    <div class="tab-pane" id="tab-portfolio">
+      <section class="content-section">
+        <h2>Portofolio Video AI Kami</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Bukti nyata kualitas visual, konsistensi karakter, dan
+          storytelling yang kami hasilkan untuk berbagai brand. <a href="https://www.tiktok.com/@anambas.ai.studio"
+            target="_blank" style="color: #60a5fa; text-decoration: underline;">Lihat lebih banyak di TikTok</a>.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem;">
+
+          <!-- Video 1 -->
           <div
-            style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
-            <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=200&auto=format&fit=crop"
-              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 1">
+            style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
+            onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
+            onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7590430944323063056', '_blank')">
             <div
-              style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
+              <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=200&auto=format&fit=crop"
+                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 1">
+              <div
+                style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div style="padding: 0.75rem;">
+              <p
+                style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
+                Fashion Promo</p>
             </div>
           </div>
-          <div style="padding: 0.75rem;">
-            <p
-              style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
-              Fashion Promo</p>
-          </div>
-        </div>
 
-        <!-- Video 2 -->
-        <div
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
-          onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
-          onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7579520468558941458', '_blank')">
+          <!-- Video 2 -->
           <div
-            style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=200&auto=format&fit=crop"
-              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 2">
+            style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
+            onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
+            onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7579520468558941458', '_blank')">
             <div
-              style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
+              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=200&auto=format&fit=crop"
+                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 2">
+              <div
+                style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div style="padding: 0.75rem;">
+              <p
+                style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
+                F&B Commercial</p>
             </div>
           </div>
-          <div style="padding: 0.75rem;">
-            <p
-              style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
-              F&B Commercial</p>
-          </div>
-        </div>
 
-        <!-- Video 3 -->
-        <div
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
-          onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
-          onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7569954630633934087', '_blank')">
+          <!-- Video 3 -->
           <div
-            style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=200&auto=format&fit=crop"
-              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 3">
+            style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
+            onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
+            onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7569954630633934087', '_blank')">
             <div
-              style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
+              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=200&auto=format&fit=crop"
+                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 3">
+              <div
+                style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div style="padding: 0.75rem;">
+              <p
+                style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
+                Music Teaser</p>
             </div>
           </div>
-          <div style="padding: 0.75rem;">
-            <p
-              style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
-              Music Teaser</p>
-          </div>
-        </div>
 
-        <!-- Video 4 -->
-        <div
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
-          onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
-          onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7601412491821813013', '_blank')">
+          <!-- Video 4 -->
           <div
-            style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
-            <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=200&auto=format&fit=crop"
-              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 4">
+            style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
+            onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
+            onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7601412491821813013', '_blank')">
             <div
-              style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
+              <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=200&auto=format&fit=crop"
+                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 4">
+              <div
+                style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div style="padding: 0.75rem;">
+              <p
+                style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
+                AI Storytelling</p>
             </div>
           </div>
-          <div style="padding: 0.75rem;">
-            <p
-              style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
-              AI Storytelling</p>
-          </div>
-        </div>
 
-        <!-- Video 5 -->
-        <div
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
-          onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
-          onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7596687072463834389', '_blank')">
+          <!-- Video 5 -->
           <div
-            style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
-            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=200&auto=format&fit=crop"
-              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 5">
+            style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer;"
+            onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'"
+            onclick="window.open('https://www.tiktok.com/@anambas.creative.studio/video/7596687072463834389', '_blank')">
             <div
-              style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              style="aspect-ratio: 9/16; background: #0b1220; display: flex; align-items: center; justify-content: center; position: relative;">
+              <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=200&auto=format&fit=crop"
+                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;" alt="TikTok Video 5">
+              <div
+                style="position: absolute; width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: background 0.3s;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div style="padding: 0.75rem;">
+              <p
+                style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
+                Cinematic Art</p>
             </div>
           </div>
-          <div style="padding: 0.75rem;">
+
+        </div>
+      </section>
+    </div>
+
+    <!-- Tab 4: Harga & Info Gabungan -->
+    <div class="tab-pane" id="tab-pricing">
+      <section class="content-section">
+        <h2>Harga (Valid mulai 2026)</h2>
+        <div class="pricing-cards">
+          <div class="price-card highlight"
+            style="border: 2px solid #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.25); transform: translateY(-5px);">
+            <div class="badge"
+              style="background: linear-gradient(90deg, #ef4444, #f97316); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+              Pilihan Terpopuler</div>
+            <div class="price-head">
+              <div class="price-title">Premium Basic (Satuan)</div>
+              <div class="price-amount">Rp 500.000 <span>/ video</span></div>
+            </div>
+            <ul>
+              <li><strong style="color: #60a5fa;"><i class="fa-regular fa-clock"></i> Estimasi pengerjaan: 1–2
+                  Hari</strong></li>
+              <li>Konsep & naskah</li>
+              <li>Karakter custom konsisten + 3–5 scene</li>
+              <li>Voice over (Human/AI premium) + musik + SFX</li>
+              <li>Editing full + subtitle premium</li>
+              <li>Format vertikal 9:16, 1080p, durasi maks 60 detik</li>
+              <li>Revisi 2x minor (visual/teks)</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <div class="price-head">
+              <div class="price-title">Monthly Creator (Bulanan)</div>
+              <div class="price-amount" style="margin-top: 15px;">
+                <s style="font-size: 1.1rem; color: #ef4444; font-weight: normal;">Rp 5.000.000</s><br>
+                <span style="font-size: 2.25rem; font-weight: 800; color: #fbbf24;">Rp 3.000.000</span> <span
+                  style="font-size: 1rem;">/ bulan</span>
+              </div>
+            </div>
+            <ul>
+              <li><strong style="color: #60a5fa;"><i class="fa-solid fa-bolt"></i> Prioritas pengerjaan
+                  tertinggi</strong>
+              </li>
+              <li>10 video (spesifikasi setara Premium Basic)</li>
+              <li>Konsistensi branding 1 bulan</li>
+              <li>Bonus: riset ide konten + kalender posting</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials / Social Proof -->
+      <section class="content-section" id="testimonials">
+        <h2>Apa Kata Klien Kami?</h2>
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+
+          <div
+            style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="display: flex; gap: 4px; color: #fbbf24; margin-bottom: 1rem;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6;">"Sangat
+              menghemat
+              budget produksi! Biasanya kami harus sewa studio dan talent, kini cukup brief ke tim ACS dan video promosi
+              kami siap dalam 2 hari. Konversi iklan juga meningkat tajam."</p>
+            <div style="font-weight: bold; color: white;">Rina M.</div>
+            <div style="font-size: 0.85rem; color: var(--muted-2);">Marketing Manager F&B</div>
+          </div>
+
+          <div
+            style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <div style="display: flex; gap: 4px; color: #fbbf24; margin-bottom: 1rem;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6;">"Awalnya ragu
+              dengan video AI, tapi hasilnya ternyata sangat hidup dan sinematik. Karakter yang kami minta sangat
+              konsisten di setiap frame. Recommended!"</p>
+            <div style="font-weight: bold; color: white;">Aris D.</div>
+            <div style="font-size: 0.85rem; color: var(--muted-2);">Owner Brand Fashion Terlokal</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="content-section">
+        <h2>FAQ (Pertanyaan Umum)</h2>
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+
+          <details
+            style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
+            <summary
+              style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Apakah bisa request karakter wajah custom? <i class="fa-solid fa-chevron-down"
+                style="font-size: 0.8rem; color: var(--muted);"></i>
+            </summary>
             <p
-              style="font-size: 0.8rem; font-weight: bold; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.2;">
-              Cinematic Art</p>
-          </div>
+              style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+              Tentu. Kami dapat membuat karakter konsisten sesuai deskripsi usia, ras, atau referensi wajah yang Anda
+              inginkan (misal: pria Asia, 30 tahun, gaya profesional dengan kacamata).</p>
+          </details>
+
+          <details
+            style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
+            <summary
+              style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Apakah suara (Voice Over) AI akan terdengar kaku seperti robot? <i class="fa-solid fa-chevron-down"
+                style="font-size: 0.8rem; color: var(--muted);"></i>
+            </summary>
+            <p
+              style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+              Sama sekali tidak. Kami menggunakan engine Voice Over AI premium yang mendukung intonasi, pernapasan, dan
+              emosi (marah, sedih, ceria) sehingga sangat natural seperti dubber manusia asli.</p>
+          </details>
+
+          <details
+            style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
+            <summary
+              style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Bagaimana jika hasil visualnya tidak sesuai harapan? <i class="fa-solid fa-chevron-down"
+                style="font-size: 0.8rem; color: var(--muted);"></i>
+            </summary>
+            <p
+              style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+              Agar tidak meleset, kami selalu membuat konfirmasi arah visual awal sebelum render final. Anda juga
+              mendapat
+              hak revisi minor maksimal 2x untuk perbaikan kecil pada visual atau teks (subtitle).</p>
+          </details>
+
+          <details
+            style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
+            <summary
+              style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Apakah paket ini cocok untuk perusahaan korporat B2B? <i class="fa-solid fa-chevron-down"
+                style="font-size: 0.8rem; color: var(--muted);"></i>
+            </summary>
+            <p
+              style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+              Sangat cocok. Animasi AI sangat ampuh untuk menyederhanakan penjelasan layanan B2B yang rumit (seperti
+              SaaS,
+              logistik, atau manufaktur) menjadi video yang mudah dipahami.</p>
+          </details>
+
         </div>
+      </section>
 
-      </div>
-    </section>
+      <section class="content-section">
+        <h2>Syarat & Ketentuan (SOP)</h2>
+        <ul class="checklist">
+          <li>Pembayaran: satuan wajib lunas di awal. Bulanan wajib lunas di awal periode.</li>
+          <li>Paket bulanan berlaku 30 hari kalender. Sisa kuota hangus (tidak akumulasi).</li>
+          <li>Revisi: maksimal 2x minor per video. Perubahan konsep total setelah jadi dikenakan biaya baru.</li>
+        </ul>
+      </section>
 
-    <section class="content-section" id="workflow">
-      <h2>Ai Video Production Workflow</h2>
-      <ol class="timeline workflow-timeline">
-        <li>
-          <span class="step-num">1</span>
-          <div class="step-title">Narasi / Ide Konten</div>
-          <div class="step-desc">Tulis skrip, pecah per scene, tentukan durasi. Fondasi cerita harus jelas.</div>
-        </li>
-        <li>
-          <span class="step-num">2</span>
-          <div class="step-title">Visual Prompting</div>
-          <div class="step-desc">Kunci gaya 3D, lighting, atmosfer, dan konsistensi karakter.</div>
-        </li>
-        <li>
-          <span class="step-num">3</span>
-          <div class="step-title">Start & End Frame</div>
-          <div class="step-desc">Buat 2 titik kontrol gerakan untuk transisi natural dan sinematik.</div>
-        </li>
-        <li>
-          <span class="step-num">4</span>
-          <div class="step-title">JSON Motion Prompt</div>
-          <div class="step-desc">Instruksi teknis gerakan: arah kamera, motion, durasi.</div>
-        </li>
-        <li>
-          <span class="step-num">5</span>
-          <div class="step-title">Generate Video</div>
-          <div class="step-desc">Ubah frame menjadi video bergerak secara cepat.</div>
-        </li>
-        <li>
-          <span class="step-num">6</span>
-          <div class="step-title">VO Script & Audio</div>
-          <div class="step-desc">Sinkronkan teks dengan scene. Gunakan style instruction + SSML untuk VO.</div>
-        </li>
-        <li>
-          <span class="step-num">7</span>
-          <div class="step-title">Background Music</div>
-          <div class="step-desc">Perkuat suasana, bukan mendominasi.</div>
-        </li>
-        <li>
-          <span class="step-num">8</span>
-          <div class="step-title">Editing & Assembly</div>
-          <div class="step-desc">Sinkron scene & VO, subtitle, SFX, rapikan pacing.</div>
-        </li>
-        <li>
-          <span class="step-num">9</span>
-          <div class="step-title">Enhancement & Export</div>
-          <div class="step-desc">Upscale HD+, sharpen ringan, export bitrate optimal.</div>
-        </li>
-      </ol>
-      <div class="callout info">Flow ringkas: Ide → Prompt → Frame → Motion → Generate → VO → Music → Edit → Enhance →
-        Export</div>
-    </section>
-
-    <section class="content-section" id="pricing">
-      <h2>Harga (Valid mulai 2026)</h2>
-      <div class="pricing-cards">
-        <div class="price-card highlight"
-          style="border: 2px solid #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.25); transform: translateY(-5px);">
-          <div class="badge"
-            style="background: linear-gradient(90deg, #ef4444, #f97316); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
-            Pilihan Terpopuler</div>
-          <div class="price-head">
-            <div class="price-title">Premium Basic (Satuan)</div>
-            <div class="price-amount">Rp 500.000 <span>/ video</span></div>
-          </div>
-          <ul>
-            <li><strong style="color: #60a5fa;"><i class="fa-regular fa-clock"></i> Estimasi pengerjaan: 1–2
-                Hari</strong></li>
-            <li>Konsep & naskah</li>
-            <li>Karakter custom konsisten + 3–5 scene</li>
-            <li>Voice over (Human/AI premium) + musik + SFX</li>
-            <li>Editing full + subtitle premium</li>
-            <li>Format vertikal 9:16, 1080p, durasi maks 60 detik</li>
-            <li>Revisi 2x minor (visual/teks)</li>
-          </ul>
-        </div>
-        <div class="price-card">
-          <div class="price-head">
-            <div class="price-title">Monthly Creator (Bulanan)</div>
-            <div class="price-amount" style="margin-top: 15px;">
-              <s style="font-size: 1.1rem; color: #ef4444; font-weight: normal;">Rp 5.000.000</s><br>
-              <span style="font-size: 2.25rem; font-weight: 800; color: #fbbf24;">Rp 3.000.000</span> <span
-                style="font-size: 1rem;">/ bulan</span>
+      <section class="content-section">
+        <h2>Kontak</h2>
+        <div class="contact-grid">
+          <a class="contact-card"
+            href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video">
+            <div class="contact-title">
+              <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
+              </svg>
+              WhatsApp
+            </div>
+            <div class="contact-value">Klik untuk chat admin</div>
+          </a>
+          <a class="contact-card"
+            href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production">
+            <div class="contact-title">Email</div>
+            <div class="contact-value">business.anambas.ai@gmail.com</div>
+          </a>
+          <a class="contact-card" href="https://www.tiktok.com/@anambas.ai.studio" target="_blank" rel="noopener">
+            <div class="contact-title">TikTok</div>
+            <div class="contact-value">@anambas.ai.studio</div>
+          </a>
+          <div class="contact-card static"
+            style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; text-align: left;">
+            <div>
+              <div class="contact-title" style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.25rem;">Lokasi
+                Kami</div>
+              <div class="contact-value" style="font-size: 1.25rem; font-weight: bold; color: white;">Tarempa Selatan,
+                Kep. Anambas</div>
+              <p
+                style="color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; max-width: 500px; line-height: 1.5;">
+                ✨ Studio kreatif berbasis AI pertama dari Kepulauan Anambas yang siap mendistribusikan karya visual
+                berdampak tinggi ke seluruh Indonesia.</p>
+            </div>
+            <div style="padding-left: 1rem;">
+              <i class="fa-solid fa-map-location-dot" style="font-size: 3rem; color: #3b82f6; opacity: 0.2;"></i>
             </div>
           </div>
-          <ul>
-            <li><strong style="color: #60a5fa;"><i class="fa-solid fa-bolt"></i> Prioritas pengerjaan tertinggi</strong>
-            </li>
-            <li>10 video (spesifikasi setara Premium Basic)</li>
-            <li>Konsistensi branding 1 bulan</li>
-            <li>Bonus: riset ide konten + kalender posting</li>
-          </ul>
         </div>
-      </div>
+    </div>
     </section>
 
-    <!-- Testimonials / Social Proof -->
-    <section class="content-section" id="testimonials">
-      <h2>Apa Kata Klien Kami?</h2>
-      <div
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-
-        <div
-          style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-          <div style="display: flex; gap: 4px; color: #fbbf24; margin-bottom: 1rem;">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6;">"Sangat menghemat
-            budget produksi! Biasanya kami harus sewa studio dan talent, kini cukup brief ke tim ACS dan video promosi
-            kami siap dalam 2 hari. Konversi iklan juga meningkat tajam."</p>
-          <div style="font-weight: bold; color: white;">Rina M.</div>
-          <div style="font-size: 0.85rem; color: var(--muted-2);">Marketing Manager F&B</div>
-        </div>
-
-        <div
-          style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-          <div style="display: flex; gap: 4px; color: #fbbf24; margin-bottom: 1rem;">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6;">"Awalnya ragu
-            dengan video AI, tapi hasilnya ternyata sangat hidup dan sinematik. Karakter yang kami minta sangat
-            konsisten di setiap frame. Recommended!"</p>
-          <div style="font-weight: bold; color: white;">Aris D.</div>
-          <div style="font-size: 0.85rem; color: var(--muted-2);">Owner Brand Fashion Terlokal</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="content-section">
-      <h2>FAQ (Pertanyaan Umum)</h2>
-      <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
-
-        <details
-          style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
-          <summary
-            style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            Apakah bisa request karakter wajah custom? <i class="fa-solid fa-chevron-down"
-              style="font-size: 0.8rem; color: var(--muted);"></i>
-          </summary>
-          <p
-            style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
-            Tentu. Kami dapat membuat karakter konsisten sesuai deskripsi usia, ras, atau referensi wajah yang Anda
-            inginkan (misal: pria Asia, 30 tahun, gaya profesional dengan kacamata).</p>
-        </details>
-
-        <details
-          style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
-          <summary
-            style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            Apakah suara (Voice Over) AI akan terdengar kaku seperti robot? <i class="fa-solid fa-chevron-down"
-              style="font-size: 0.8rem; color: var(--muted);"></i>
-          </summary>
-          <p
-            style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
-            Sama sekali tidak. Kami menggunakan engine Voice Over AI premium yang mendukung intonasi, pernapasan, dan
-            emosi (marah, sedih, ceria) sehingga sangat natural seperti dubber manusia asli.</p>
-        </details>
-
-        <details
-          style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
-          <summary
-            style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            Bagaimana jika hasil visualnya tidak sesuai harapan? <i class="fa-solid fa-chevron-down"
-              style="font-size: 0.8rem; color: var(--muted);"></i>
-          </summary>
-          <p
-            style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
-            Agar tidak meleset, kami selalu membuat konfirmasi arah visual awal sebelum render final. Anda juga mendapat
-            hak revisi minor maksimal 2x untuk perbaikan kecil pada visual atau teks (subtitle).</p>
-        </details>
-
-        <details
-          style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
-          <summary
-            style="font-weight: bold; color: white; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            Apakah paket ini cocok untuk perusahaan korporat B2B? <i class="fa-solid fa-chevron-down"
-              style="font-size: 0.8rem; color: var(--muted);"></i>
-          </summary>
-          <p
-            style="color: var(--muted); margin-top: 1rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
-            Sangat cocok. Animasi AI sangat ampuh untuk menyederhanakan penjelasan layanan B2B yang rumit (seperti SaaS,
-            logistik, atau manufaktur) menjadi video yang mudah dipahami.</p>
-        </details>
-
-      </div>
-    </section>
-
-    <section class="content-section">
-      <h2>Syarat & Ketentuan (SOP)</h2>
-      <ul class="checklist">
-        <li>Pembayaran: satuan wajib lunas di awal. Bulanan wajib lunas di awal periode.</li>
-        <li>Paket bulanan berlaku 30 hari kalender. Sisa kuota hangus (tidak akumulasi).</li>
-        <li>Revisi: maksimal 2x minor per video. Perubahan konsep total setelah jadi dikenakan biaya baru.</li>
-      </ul>
-    </section>
-
-    <section class="content-section">
-      <h2>Kontak</h2>
-      <div class="contact-grid">
-        <a class="contact-card"
-          href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video">
-          <div class="contact-title">
-            <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
-            </svg>
-            WhatsApp
-          </div>
-          <div class="contact-value">Klik untuk chat admin</div>
-        </a>
-        <a class="contact-card"
-          href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production">
-          <div class="contact-title">Email</div>
-          <div class="contact-value">business.anambas.ai@gmail.com</div>
-        </a>
-        <a class="contact-card" href="https://www.tiktok.com/@anambas.ai.studio" target="_blank" rel="noopener">
-          <div class="contact-title">TikTok</div>
-          <div class="contact-value">@anambas.ai.studio</div>
-        </a>
-        <div class="contact-card static"
-          style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; text-align: left;">
-          <div>
-            <div class="contact-title" style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.25rem;">Lokasi
-              Kami</div>
-            <div class="contact-value" style="font-size: 1.25rem; font-weight: bold; color: white;">Tarempa Selatan,
-              Kep. Anambas</div>
-            <p style="color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; max-width: 500px; line-height: 1.5;">
-              ✨ Studio kreatif berbasis AI pertama dari Kepulauan Anambas yang siap mendistribusikan karya visual
-              berdampak tinggi ke seluruh Indonesia.</p>
-          </div>
-          <div style="padding-left: 1rem;">
-            <i class="fa-solid fa-map-location-dot" style="font-size: 3rem; color: #3b82f6; opacity: 0.2;"></i>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div> <!-- End of tab-pricing -->
   </main>
 
   <footer class="page-footer">
@@ -664,10 +873,55 @@
   <script src="/assets/js/whatsapp.js"></script>
   <script src="/assets/js/click-spark.js"></script>
   <script>
-    // JS for the In-Page Sticky Nav
+    // JS for the Tab System & Sticky Nav
     const stickyWrapper = document.getElementById('stickyNavWrapper');
     const inpageToggleBtn = document.getElementById('inpageToggleBtn');
     const inpageNavMenu = document.getElementById('inpageNavMenu');
+
+    // Tab Script
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Hapus kelas aktif dari semua tab button dan tab pane
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+
+        // Tambahkan kelas aktif ke yang diklik
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) targetPane.classList.add('active');
+
+        // Tutup menu mobile jika dibuka
+        if (inpageNavMenu.classList.contains('show')) {
+          inpageNavMenu.classList.remove('show');
+          inpageToggleBtn.querySelector('i').classList.remove('fa-xmark');
+          inpageToggleBtn.querySelector('i').classList.add('fa-bars');
+        }
+      });
+    });
+
+    // Contact Panel Dropdown Script
+    const contactTriggerBtn = document.getElementById('contactTriggerBtn');
+    const contactDropdown = document.getElementById('contactDropdown');
+
+    if (contactTriggerBtn && contactDropdown) {
+      contactTriggerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        contactDropdown.classList.toggle('show');
+        contactTriggerBtn.classList.toggle('active');
+      });
+
+      // Close contact panel clicking outside
+      document.addEventListener('click', (e) => {
+        if (!contactDropdown.contains(e.target) && !contactTriggerBtn.contains(e.target)) {
+          contactDropdown.classList.remove('show');
+          contactTriggerBtn.classList.remove('active');
+        }
+      });
+    }
 
     // Toggle mobile menu visibility
     if (inpageToggleBtn && inpageNavMenu) {
@@ -681,15 +935,6 @@
           icon.classList.remove('fa-xmark');
           icon.classList.add('fa-bars');
         }
-      });
-
-      // Close mobile menu when link is clicked
-      document.querySelectorAll('.inpage-nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          inpageNavMenu.classList.remove('show');
-          inpageToggleBtn.querySelector('i').classList.remove('fa-xmark');
-          inpageToggleBtn.querySelector('i').classList.add('fa-bars');
-        });
       });
     }
 
