@@ -58,181 +58,172 @@
   </script>
 
   <style>
-    /* Enhanced Navigation Styles */
+    /* In-Page Sticky Nav Styles */
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 80px;
+      /* Offset for sticky nav */
     }
 
-    .enhanced-nav {
+    .page-sticky-nav-wrapper {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(11, 18, 32, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 999;
+      margin-top: 2rem;
       transition: all 0.3s ease;
     }
 
-    .nav-brand {
-      text-decoration: none;
+    .page-sticky-nav {
+      background: rgba(11, 18, 32, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      /* Pill shape initially */
+      padding: 0.5rem 1rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 1.2rem;
-      letter-spacing: -0.5px;
+      gap: 1rem;
+      max-width: fit-content;
+      margin: 0 auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .nav-brand:hover {
-      color: #3b82f6;
+    /* When it becomes sticky at the top, we want it full width or flush */
+    .page-sticky-nav-wrapper.is-sticky .page-sticky-nav {
+      max-width: 100%;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      padding: 0.75rem 2rem;
+      background: rgba(11, 18, 32, 0.95);
     }
 
-    .nav-menu {
+    .inpage-nav-menu {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
+      margin-left: 1rem;
     }
 
-    .nav-link {
+    .inpage-nav-link {
       color: var(--muted, #9ca3af);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      position: relative;
       transition: color 0.3s ease;
       white-space: nowrap;
     }
 
-    .nav-link:hover {
+    .inpage-nav-link:hover {
       color: #ffffff;
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: #3b82f6;
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-actions {
-      display: flex;
+    .inpage-btn-wa {
+      display: inline-flex;
       align-items: center;
-      gap: 1rem;
-      margin-left: 1rem;
-    }
-
-    .nav-btn-secondary {
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: #25D366;
+      color: #111;
       padding: 0.5rem 1.25rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      text-decoration: none;
+      border-radius: 100px;
+      font-weight: 700;
       font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      white-space: nowrap;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
     }
 
-    .nav-btn-secondary:hover {
+    .inpage-btn-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .inpage-btn-email {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .inpage-btn-email:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: rgba(255, 255, 255, 0.4);
     }
 
-    .nav-btn-primary {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1.25rem;
-      border-radius: 9999px;
-      background: #25D366;
-      /* WhatsApp Green */
-      color: #111;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
-      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .nav-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-      background: #20b858;
-    }
-
-    .wa-icon-small {
-      width: 16px;
-      height: 16px;
-    }
-
-    .menu-toggle {
+    .inpage-toggle {
       display: none;
       background: none;
       border: none;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       cursor: pointer;
+      padding: 0.5rem;
+      margin-left: auto;
     }
 
-    /* Responsive Styles for Mobile/Tablet */
-    @media (max-width: 1080px) {
-      .enhanced-nav {
-        padding: 1rem;
+    /* Responsive */
+    @media (max-width: 900px) {
+      .page-sticky-nav {
+        max-width: 100%;
+        border-radius: 12px;
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
       }
 
-      .menu-toggle {
+      .page-sticky-nav-wrapper.is-sticky .page-sticky-nav {
+        border-radius: 0;
+      }
+
+      .inpage-toggle {
         display: block;
       }
 
-      .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
+      .inpage-nav-menu {
+        display: none;
+        /* Hide standard links by default on mobile */
         width: 100%;
-        background: rgba(11, 18, 32, 0.98);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
-        padding: 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: clip-path 0.4s ease-in-out;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      }
-
-      .nav-menu.active {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      }
-
-      .nav-actions {
+        gap: 1rem;
         margin-left: 0;
-        width: 100%;
-        flex-direction: column;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-      .nav-btn-primary,
-      .nav-btn-secondary {
-        width: 100%;
-        justify-content: center;
-        padding: 0.85rem;
+      .inpage-nav-menu.show {
+        display: flex;
+        animation: fadeInDown 0.3s ease forwards;
+      }
+
+      .inpage-btn-wa,
+      .inpage-btn-email {
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
@@ -240,35 +231,11 @@
 
 <body>
 
-  <nav class="enhanced-nav" id="navbar">
-    <a class="nav-brand" href="/">
-      <i class="fa-solid fa-arrow-left" style="font-size: 0.9rem; margin-right: 4px;"></i> ACS
-    </a>
-
-    <button class="menu-toggle" aria-label="Toggle menu" id="mobileMenuBtn">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-
-    <div class="nav-menu" id="navMenu">
-      <a href="#portfolio" class="nav-link">Portofolio Video AI</a>
-      <a href="#workflow" class="nav-link">Workflow</a>
-      <a href="#pricing" class="nav-link">Harga & Info</a>
-      <a href="#testimonials" class="nav-link">Testimoni</a>
-
-      <div class="nav-actions">
-        <a class="nav-btn-secondary"
-          href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production">
-          Email
-        </a>
-        <a class="nav-btn-primary"
-          href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video">
-          <svg class="wa-icon-small" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor"
-              d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
-          </svg>
-          WhatsApp
-        </a>
-      </div>
+  <nav class="top-nav">
+    <a class="back-link" href="/">← Kembali</a>
+    <div class="brand-mini">
+      <span class="brand-name">Anambas Creative Studio</span>
+      <span class="brand-tagline">Design. Video. AI.</span>
     </div>
   </nav>
 
@@ -283,16 +250,37 @@
         style="display:inline-block; padding: 6px 16px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 20px; color: #ef4444; font-size: 0.95rem; font-weight: bold; animation: pulse 2s infinite;">🔥
         Slot bulanan terbatas — hanya menerima 3 klien/bulan untuk menjaga kualitas premium.</span>
     </p>
-    <div class="hero-cta">
-      <a class="btn primary wa-btn"
-        href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video">
-        <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path
-            d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
-        </svg>
-        <span>WhatsApp</span>
-      </a>
-      <a class="btn" href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production">Email</a>
+    <!-- In-Page Sticky Nav -->
+    <div class="page-sticky-nav-wrapper" id="stickyNavWrapper">
+      <div class="page-sticky-nav">
+        <!-- CTA Utama Selalu Kelihatan -->
+        <a class="inpage-btn-wa"
+          href="https://wa.me/6281268918360?text=Halo+Anambas,+saya+tertarik+dengan+layanan+AI+Video">
+          <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M12 2a9.5 9.5 0 0 0-8.2 14.3L3 22l5.9-1.7-.3-.2A9.5 9.5 0 1 0 12 2zm0 17.3a7.8 7.8 0 0 1-3.8-1l-.3-.2-3.5 1 1-3.4-.2-.4A7.8 7.8 0 1 1 12 19.3zm4.5-5.2c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.4 6.4 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.1-.4 0-.6s-.6-1.4-.8-1.9c-.2-.5-.4-.4-.6-.4H7.6c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z" />
+          </svg>
+          WhatsApp
+        </a>
+
+        <a class="inpage-btn-email"
+          href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20AI%20Video%20Production">
+          Email
+        </a>
+
+        <!-- Hamburger Icon untuk mobile -->
+        <button class="inpage-toggle" id="inpageToggleBtn" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Menu Links -->
+        <div class="inpage-nav-menu" id="inpageNavMenu">
+          <a href="#portfolio" class="inpage-nav-link">Portofolio Video AI</a>
+          <a href="#workflow" class="inpage-nav-link">Workflow</a>
+          <a href="#pricing" class="inpage-nav-link">Harga & Info</a>
+          <a href="#testimonials" class="inpage-nav-link">Testimoni</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -676,30 +664,44 @@
   <script src="/assets/js/whatsapp.js"></script>
   <script src="/assets/js/click-spark.js"></script>
   <script>
-    // Hamburger Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navMenu = document.getElementById('navMenu');
+    // JS for the In-Page Sticky Nav
+    const stickyWrapper = document.getElementById('stickyNavWrapper');
+    const inpageToggleBtn = document.getElementById('inpageToggleBtn');
+    const inpageNavMenu = document.getElementById('inpageNavMenu');
 
-    mobileMenuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      const icon = mobileMenuBtn.querySelector('i');
-      if (navMenu.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-xmark');
-      } else {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
-      }
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
-        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+    // Toggle mobile menu visibility
+    if (inpageToggleBtn && inpageNavMenu) {
+      inpageToggleBtn.addEventListener('click', () => {
+        inpageNavMenu.classList.toggle('show');
+        const icon = inpageToggleBtn.querySelector('i');
+        if (inpageNavMenu.classList.contains('show')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        } else {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
       });
-    });
+
+      // Close mobile menu when link is clicked
+      document.querySelectorAll('.inpage-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          inpageNavMenu.classList.remove('show');
+          inpageToggleBtn.querySelector('i').classList.remove('fa-xmark');
+          inpageToggleBtn.querySelector('i').classList.add('fa-bars');
+        });
+      });
+    }
+
+    // Intersection Observer to detect when the wrapper sticks to the top
+    if (stickyWrapper) {
+      const observer = new IntersectionObserver(
+        ([e]) => { e.target.classList.toggle('is-sticky', e.intersectionRatio < 1) },
+        { threshold: [1] }
+      );
+
+      observer.observe(stickyWrapper);
+    }
   </script>
   <style>
     @keyframes pulse {
