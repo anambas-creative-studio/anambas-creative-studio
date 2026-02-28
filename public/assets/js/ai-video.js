@@ -1,5 +1,6 @@
 // JS for the Tab System & Sticky Nav
 const stickyWrapper = document.getElementById('stickyNavWrapper');
+const inpageToggleBtn = document.getElementById('inpageToggleBtn');
 const inpageNavMenu = document.getElementById('inpageNavMenu');
 
 // Tab Script
@@ -18,9 +19,18 @@ tabBtns.forEach(btn => {
         const targetPane = document.getElementById(targetId);
         if (targetPane) targetPane.classList.add('active');
 
-        // Tutup menu mobile jika tab ditekan (Aman jika formasi masih flexbox vertikal, meski sekarang sudah scroll)
+        // Tutup menu mobile jika dibuka
         if (inpageNavMenu && inpageNavMenu.classList.contains('show')) {
             inpageNavMenu.classList.remove('show');
+
+            if (inpageToggleBtn) {
+                const icon = inpageToggleBtn.querySelector('i');
+
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
         }
     });
 });
@@ -45,8 +55,23 @@ if (contactTriggerBtn && contactDropdown) {
     });
 }
 
-// (Toggle menu mobile functionality removed - replaced by Horizontal Scroll CSS)
+// Toggle mobile menu visibility
+if (inpageToggleBtn && inpageNavMenu) {
+    inpageToggleBtn.addEventListener('click', () => {
+        inpageNavMenu.classList.toggle('show');
+        const icon = inpageToggleBtn.querySelector('i');
 
+        if (icon) {
+            if (inpageNavMenu.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+}
 // Intersection Observer to detect when the wrapper sticks to the top
 if (stickyWrapper) {
     const observer = new IntersectionObserver(([e]) => {

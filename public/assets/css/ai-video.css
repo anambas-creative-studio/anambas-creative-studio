@@ -438,50 +438,33 @@ html {
   }
 
   .inpage-toggle {
-    display: none !important;
+    display: block;
   }
 
-  /* Tetap tempelkan tombol ke pojok kalau butuh */
   .btn-contact-trigger {
     margin-left: auto;
-    flex-shrink: 0;
   }
 
-  /* Mengubah Tab Menu Mobile menjadi Horizontal Scroll! */
   .inpage-nav-menu {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
-    margin-left: 0;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-    overflow-x: auto;
-    /* Smooth Scroll */
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    /* Memberi sedikit jarak bernafas di ujung */
-    padding-bottom: 5px;
-  }
-
-  /* Menyembunyikan tampilan visual bar scrollbar agar terlihat seperti App modern */
-  .inpage-nav-menu::-webkit-scrollbar {
     display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    margin-left: 0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .inpage-nav-menu {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .inpage-nav-menu.show {
+    display: flex;
+    animation: fadeInDown 0.3s ease forwards;
   }
 
-  /* Mencegah teks menu tab terpotong / turun baris */
   .tab-btn {
-    text-align: center;
-    padding: 0.6rem 1.1rem;
-    white-space: nowrap;
-    flex-shrink: 0;
+    text-align: left;
+    padding: 0.75rem 1rem;
   }
 
   .contact-dropdown-panel {
