@@ -56,12 +56,14 @@
                     },
                     colors: {
                         brand: {
-                            blue: '#3b82f6',
-                            purple: '#a855f7',
+                            blue: '#1d4ed8',
+                            purple: '#8b5cf6',
                             yellow: '#fbbf24',
-                            cyan: '#22d3ee',
-                            dark: '#0f172a',
-                            darker: '#020617',
+                            cyan: '#2dd4bf',
+                            gold: '#f59e0b',
+                            goldDark: '#b45309',
+                            dark: '#081428',
+                            darker: '#050c17',
                         }
                     },
                     animation: {
@@ -232,7 +234,7 @@
                         class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Cara
                         Order</a>
                     <a href="https://wa.me/6281268918360?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20ACS"
-                        class="ml-3 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-blue to-blue-600 text-white text-sm font-bold shadow-lg shadow-brand-blue/30 hover:shadow-brand-blue/50 hover:-translate-y-0.5 transition-all">
+                        class="ml-3 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-gold to-brand-goldDark text-white text-sm font-bold shadow-lg shadow-brand-gold/30 border border-yellow-200/20 hover:shadow-brand-gold/50 hover:-translate-y-0.5 transition-all">
                         <i class="fab fa-whatsapp mr-1.5"></i> Hubungi Kami
                     </a>
                 </div>
@@ -271,14 +273,18 @@
         <!-- Background Effects -->
         <div class="absolute inset-0 pointer-events-none">
             <div
-                class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-blue/10 blur-[120px] animate-float">
+                class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:250px_250px] opacity-[0.03]">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-darker via-transparent to-brand-darker"></div>
+            <div
+                class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-cyan/15 blur-[120px] animate-float">
             </div>
             <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-brand-purple/10 blur-[120px] animate-float"
                 style="animation-delay:-3s"></div>
-            <div class="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-brand-cyan/5 blur-[100px]">
+            <div class="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-brand-gold/10 blur-[100px]">
             </div>
             <div class="absolute inset-0"
-                style="background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 32px 32px;">
+                style="background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 32px 32px;">
             </div>
         </div>
 
@@ -298,7 +304,7 @@
                         style="animation-delay:0.1s">
                         Desain Profesional,
                         <span
-                            class="bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-purple bg-clip-text text-transparent">Harga
+                            class="bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple bg-clip-text text-transparent">Harga
                             Bersahabat</span>
                     </h1>
 
@@ -312,7 +318,7 @@
                     <!-- Dual CTA -->
                     <div class="flex flex-col sm:flex-row gap-4 reveal-up" style="animation-delay:0.3s">
                         <a href="https://wa.me/6281268918360?text=Halo%2C%20saya%20ingin%20konsultasi%20gratis%20tentang%20layanan%20ACS"
-                            class="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-br from-[#8168ff] to-[#6144f8] text-white font-extrabold text-lg shadow-2xl shadow-[#7b61ff]/40 hover:shadow-[#7b61ff]/60 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide">
+                            class="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-br from-brand-gold to-brand-goldDark text-white font-extrabold text-lg shadow-2xl shadow-brand-gold/30 border border-yellow-200/20 hover:shadow-brand-gold/50 hover:border-yellow-200/40 hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide">
                             <i class="fab fa-whatsapp text-2xl"></i> FREE Konsultasi
                         </a>
                         <a href="#layanan"
@@ -510,7 +516,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card 1: Desain Profesional -->
                 <div
-                    class="group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-brand-blue/30 transition-all duration-500 hover:-translate-y-2 reveal-up">
+                    class="group p-8 rounded-[24px] border border-white/5 border-t-brand-gold/20 border-l-brand-gold/20 shadow-[inset_1px_1px_0_rgba(245,158,11,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:border-brand-gold/40 hover:shadow-[0_8px_32px_rgba(245,158,11,0.2)] transition-all duration-500 hover:-translate-y-2 reveal-up relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none">
+                    </div>
                     <div class="w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
                         <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -552,8 +561,11 @@
                 </div>
 
                 <!-- Card 2: Harga Ramah UMKM -->
-                <div class="group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-brand-purple/30 transition-all duration-500 hover:-translate-y-2 reveal-up"
+                <div class="group p-8 rounded-[24px] border border-white/5 border-t-brand-purple/20 border-l-brand-purple/20 shadow-[inset_1px_1px_0_rgba(139,92,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:border-brand-purple/40 hover:shadow-[0_8px_32px_rgba(139,92,246,0.2)] transition-all duration-500 hover:-translate-y-2 reveal-up relative overflow-hidden"
                     style="animation-delay:0.1s">
+                    <div
+                        class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none">
+                    </div>
                     <div class="w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
                         <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -598,8 +610,11 @@
                 </div>
 
                 <!-- Card 3: Revisi Sampai Puas -->
-                <div class="group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-green-500/30 transition-all duration-500 hover:-translate-y-2 reveal-up"
+                <div class="group p-8 rounded-[24px] border border-white/5 border-t-brand-cyan/20 border-l-brand-cyan/20 shadow-[inset_1px_1px_0_rgba(45,212,191,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:border-brand-cyan/40 hover:shadow-[0_8px_32px_rgba(45,212,191,0.2)] transition-all duration-500 hover:-translate-y-2 reveal-up relative overflow-hidden"
                     style="animation-delay:0.2s">
+                    <div
+                        class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none">
+                    </div>
                     <div class="w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
                         <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -633,8 +648,11 @@
                 </div>
 
                 <!-- Card 4: Proses Cepat -->
-                <div class="group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-brand-yellow/30 transition-all duration-500 hover:-translate-y-2 reveal-up"
+                <div class="group p-8 rounded-[24px] border border-white/5 border-t-brand-blue/20 border-l-brand-blue/20 shadow-[inset_1px_1px_0_rgba(29,78,216,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:border-brand-blue/40 hover:shadow-[0_8px_32px_rgba(29,78,216,0.2)] transition-all duration-500 hover:-translate-y-2 reveal-up relative overflow-hidden"
                     style="animation-delay:0.3s">
+                    <div
+                        class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none">
+                    </div>
                     <div class="w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
                         <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -712,7 +730,10 @@
 
                 <!-- Ai Video Production -->
                 <a href="/services/ai-video.html"
-                    class="group relative rounded-3xl border border-white/5 bg-white/[0.02] hover:border-brand-cyan/40 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-brand-cyan/10 reveal-up">
+                    class="group relative rounded-3xl border border-white/5 border-t-brand-cyan/20 border-l-brand-cyan/20 shadow-[inset_1px_1px_0_rgba(45,212,191,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-cyan/40 hover:shadow-[0_8px_32px_rgba(45,212,191,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up">
+                    <div
+                        class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none">
+                    </div>
                     <div
                         class="absolute top-4 right-4 px-3 py-1 rounded-full bg-gradient-to-r from-brand-blue to-brand-purple text-white text-xs font-extrabold uppercase tracking-wider">
                         AI-Powered</div>
@@ -789,8 +810,11 @@
 
                 <!-- Graphic Design -->
                 <a href="/services/graphic-design.html"
-                    class="group relative rounded-3xl border border-white/5 bg-white/[0.02] hover:border-brand-blue/40 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-brand-blue/10 reveal-up"
+                    class="group relative rounded-3xl border border-white/5 border-t-brand-gold/20 border-l-brand-gold/20 shadow-[inset_1px_1px_0_rgba(245,158,11,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-gold/40 hover:shadow-[0_8px_32px_rgba(245,158,11,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up"
                     style="animation-delay:0.1s">
+                    <div
+                        class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none">
+                    </div>
                     <div
                         class="absolute top-4 right-4 px-3 py-1 rounded-full bg-brand-yellow text-brand-darker text-xs font-extrabold uppercase tracking-wider">
                         Popular</div>
@@ -861,8 +885,11 @@
 
                 <!-- Video Editing -->
                 <a href="/services/video-editing.html"
-                    class="group relative rounded-3xl border border-white/5 bg-white/[0.02] hover:border-brand-purple/40 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-brand-purple/10 reveal-up"
+                    class="group relative rounded-3xl border border-white/5 border-t-brand-purple/20 border-l-brand-purple/20 shadow-[inset_1px_1px_0_rgba(139,92,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-purple/40 hover:shadow-[0_8px_32px_rgba(139,92,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up"
                     style="animation-delay:0.2s">
+                    <div
+                        class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none">
+                    </div>
                     <div class="p-8 pb-0">
                         <div class="w-24 h-24 mb-6 group-hover:scale-110 transition-transform duration-300">
                             <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
