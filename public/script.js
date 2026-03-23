@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Voice Over & Audio Pro</li>
                         <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue"></i> Full HD 1080p (9:16)</li>
                     </ul>
-                    <a href="https://wa.me/6281268918360" class="block text-center bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-lg transition">Pesan Sekarang</a>
+                    <a href="https://wa.me/6281218419297" class="block text-center bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-lg transition">Pesan Sekarang</a>
                 </div>
 
                 <div class="bg-slate-900/50 backdrop-blur-sm border rounded-2xl p-6 hover:border-brand-blue/50 transition duration-300 border-brand-blue/50 bg-gradient-to-br from-brand-blue/10 to-brand-purple/10">
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Konsistensi Branding Karakter</li>
                         <li class="flex gap-2"><i class="fa-solid fa-star text-yellow-400"></i> Bonus Riset Ide & Kalender</li>
                     </ul>
-                    <a href="https://wa.me/6281268918360" class="block text-center bg-brand-blue hover:bg-brand-blue/90 text-white py-2 rounded-lg transition">Langganan Sekarang</a>
+                    <a href="https://wa.me/6281218419297" class="block text-center bg-brand-blue hover:bg-brand-blue/90 text-white py-2 rounded-lg transition">Langganan Sekarang</a>
                 </div>
             `;
         }
