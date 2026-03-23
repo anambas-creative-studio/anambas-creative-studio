@@ -671,4 +671,42 @@ html {
   .timeline-glass-card {
     width: 100%;
   }
+  .timeline-big-icon {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   TIMELINE BIG 3D ICONS
+   ========================================================================== */
+.timeline-big-icon {
+  position: absolute;
+  top: 50%;
+  font-size: 90px;
+  color: #3a8fdd;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 25px rgba(58, 143, 221, 0.6));
+  text-shadow: 0 0 10px rgba(58, 143, 221, 0.5);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.timeline-node.left .timeline-big-icon {
+  left: 75%;
+  animation: float-right-side 4s ease-in-out infinite;
+}
+
+.timeline-node.right .timeline-big-icon {
+  left: 25%;
+  animation: float-left-side 4s ease-in-out infinite;
+}
+
+@keyframes float-right-side {
+  0%, 100% { transform: translate(-50%, -50%) perspective(300px) rotateY(15deg) translateY(0px); }
+  50% { transform: translate(-50%, -50%) perspective(300px) rotateY(15deg) translateY(-12px); }
+}
+
+@keyframes float-left-side {
+  0%, 100% { transform: translate(-50%, -50%) perspective(300px) rotateY(-15deg) translateY(0px); }
+  50% { transform: translate(-50%, -50%) perspective(300px) rotateY(-15deg) translateY(-12px); }
 }
