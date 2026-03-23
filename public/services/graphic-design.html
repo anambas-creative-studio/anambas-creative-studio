@@ -32,7 +32,9 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/service.css?v=2" />
+  <link rel="stylesheet" href="/assets/css/premium-service.css" />
 
   <!-- Structured Data (Schema.org) -->
   <script type="application/ld+json">
@@ -110,34 +112,54 @@
         <span>Gallery</span>
       </button>
     </div>
-  </header>
 
-  <!-- Portfolio GSAP Flip Carousel -->
-  <section class="portfolio-grid-section" id="portfolio-carousel" style="display: none;">
-    <div class="content-card" style="padding: 2.5rem 2rem;">
-      <div class="portfolio-header">
-        <h2>Karya <span class="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent"
-            style="background-clip: text; -webkit-background-clip: text;">Terbaik Kami</span></h2>
-        <p>Koleksi hasil kerja kami dari berbagai klien dan industri.</p>
-      </div>
+    <!-- In-Page Sticky Nav (Sistem Tab) -->
+    <div class="page-sticky-nav-wrapper" id="stickyNavWrapper">
+      <div class="page-sticky-nav">
+        <!-- Hamburger Icon untuk mobile -->
+        <button class="inpage-toggle" id="inpageToggleBtn" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
 
-      <div class="wrapper">
-        <div class="container-flip">
-          <img class="flip-img" src="/assets/img/Portofolio%20Design/A1.png" alt="" />
-          <img class="flip-img" src="/assets/img/Portofolio%20Design/AFR.png" alt="" />
-          <img class="flip-img" src="/assets/img/Portofolio%20Design/ARB01.png" alt="" />
-          <img class="flip-img" src="/assets/img/Portofolio%20Design/Gerindra.png" alt="" />
-          <img class="flip-img" src="/assets/img/Portofolio%20Design/Jack%20Dolphin.jpg" alt="" />
-          <img class="flip-img" src="/assets/img/Portofolio%20Design/KADIN%20BINTAN%20RED-BLUE.png" alt="" />
-          <img class="flip-img" src="/assets/img/Portofolio%20Design/R1.png" alt="" />
+        <!-- Menu Tab Links -->
+        <div class="inpage-nav-menu" id="inpageNavMenu">
+          <button class="tab-btn active" data-target="tab-overview">Overview</button>
+          <button class="tab-btn" data-target="tab-portfolio">Portofolio Desain</button>
+          <button class="tab-btn" data-target="tab-workflow">Sistem Produksi</button>
+          <button class="tab-btn" data-target="tab-pricing">Rate Card</button>
+          <button class="tab-btn" data-target="tab-faq">FAQ & Kontak</button>
         </div>
-        <div class="buttons">
-          <button class="btn primary" id="prev-flip" style="background: rgba(255,255,255,0.1);">Previous</button>
-          <button class="btn primary" id="next-flip" style="background: rgba(255,255,255,0.1);">Next</button>
+
+        <button class="btn-contact-trigger" id="contactTriggerBtn">
+          <i class="fa-solid fa-headset"></i> Layanan Kontak
+        </button>
+
+        <!-- Panel Dropdown Kontak -->
+        <div class="contact-dropdown-panel" id="contactDropdown">
+          <div class="dropdown-header">Hubungi Studio Kami</div>
+          <div class="dropdown-links">
+            <a href="https://wa.me/6281218419297?text=Halo+Anambas,+saya+tertarik+dengan+layanan+Desain+Grafis"
+              class="dropdown-link-item wa-item" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i>
+              WhatsApp (Respon Cepat)
+            </a>
+            <a href="mailto:business.anambas.ai@gmail.com?subject=Konsultasi%20Desain%20Grafis"
+              class="dropdown-link-item">
+              <i class="fa-regular fa-envelope" style="font-size: 1.25rem; width: 20px; text-align: center;"></i>
+              Email Bisnis
+            </a>
+            <a href="https://www.tiktok.com/@anambas.creative.studio" class="dropdown-link-item" target="_blank"
+              rel="noopener">
+              <i class="fa-brands fa-tiktok" style="font-size: 1.25rem; width: 20px; text-align: center;"></i>
+              TikTok @anambas.creative.studio
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
+
+  <!-- Portfolio GSAP moved inside Tabs manually -->
 
   <style>
     .portfolio-grid-section {
@@ -298,8 +320,12 @@
   </script>
 
 
-  <main class="content-card">
-    <section class="content-section reveal">
+  <!-- Container Utama Untuk Tabs -->
+  <main class="content-card tab-content-container">
+    
+    <!-- Tab 1: Overview (Pilar & USP) -->
+    <div class="tab-pane active" id="tab-overview">
+      <section class="content-section reveal">
       <div class="section-divider"></div>
       <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Pilar Kualitas Desain Kami</h2>
       <p style="color: var(--muted); font-size: 1.05rem; margin-bottom: 32px; max-width: 75ch;">
@@ -414,76 +440,109 @@
           </div>
         </div>
       </section>
+    </div> <!-- Akhir Tab 1 -->
 
-      <section class="content-section reveal">
-        <div class="section-divider"></div>
-        <div class="section-head">
-          <div>
-            <h2 class="section-title" style="font-size: 2rem;"><span class="section-icon" aria-hidden="true"><svg
-                  viewBox="0 0 24 24" role="presentation">
-                  <path d="M4 7h16M4 12h10M4 17h7" fill="none" stroke="currentColor" stroke-width="1.6"
-                    stroke-linecap="round" />
-                </svg></span>Workflow Produksi: Dari Brief Hingga Final</h2>
-            <p class="section-subtitle" style="font-size: 1.02rem; line-height: 1.7; max-width: 70ch;">
-              Transparansi penuh di setiap tahap. Anda tahu persis apa yang sedang dikerjakan, kapan selesai, dan apa
-              yang Anda dapatkan. <strong>Tidak ada "magic box" yang bikin penasaran</strong>,semua proses jelas dan
-              terukur.
-            </p>
+    <!-- Tab 2: Portofolio -->
+    <div class="tab-pane" id="tab-portfolio">
+      <section class="portfolio-grid-section" id="portfolio-carousel">
+        <div class="content-card" style="padding: 2.5rem 2rem; background: rgba(11, 18, 32, 0.4); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px);">
+          <div class="portfolio-header">
+            <h2>Karya <span class="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent" style="background-clip: text; -webkit-background-clip: text;">Terbaik Kami</span></h2>
+            <p>Koleksi hasil kerja kami dari berbagai klien dan industri.</p>
+          </div>
+          <div class="wrapper">
+            <div class="container-flip">
+              <img class="flip-img" src="/assets/img/Portofolio%20Design/A1.png" alt="" />
+              <img class="flip-img" src="/assets/img/Portofolio%20Design/AFR.png" alt="" />
+              <img class="flip-img" src="/assets/img/Portofolio%20Design/ARB01.png" alt="" />
+              <img class="flip-img" src="/assets/img/Portofolio%20Design/Gerindra.png" alt="" />
+              <img class="flip-img" src="/assets/img/Portofolio%20Design/Jack%20Dolphin.jpg" alt="" />
+              <img class="flip-img" src="/assets/img/Portofolio%20Design/KADIN%20BINTAN%20RED-BLUE.png" alt="" />
+              <img class="flip-img" src="/assets/img/Portofolio%20Design/R1.png" alt="" />
+            </div>
+            <div class="buttons">
+              <button class="btn primary" id="prev-flip" style="background: rgba(255,255,255,0.1);">Previous</button>
+              <button class="btn primary" id="next-flip" style="background: rgba(255,255,255,0.1);">Next</button>
+            </div>
           </div>
         </div>
-        <ol class="timeline">
-          <li>
-            <span class="step-num">1</span>
-            <div class="step-title">Intake & Briefing</div>
-            <div class="step-desc">Spesifikasi teknis: jenis desain, ukuran, deadline, tujuan, target audiens, dan
-              referensi visual.
-              <br><strong>Timeline:</strong> 15-30 menit | <strong>Output:</strong> Brief tertulis + konfirmasi harga
-            </div>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <div class="step-title">Visual Direction</div>
-            <div class="step-desc">Tentukan warna utama, font, mood, dan analisis kompetitor untuk alignment awal.
-              <br><strong>Timeline:</strong> 1-2 jam | <strong>Output:</strong> Palet warna + font pairing + mood
-              reference
-            </div>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <div class="step-title">Production Phase</div>
-            <div class="step-desc">Eksekusi dengan layer terstruktur: headline, visual utama, elemen pendukung.
-              Readability prioritas utama.
-              <br><strong>Timeline:</strong> 4-8 jam | <strong>Output:</strong> Draft 1 untuk review
-            </div>
-          </li>
-          <li>
-            <span class="step-num">4</span>
-            <div class="step-title">Self Quality Control</div>
-            <div class="step-desc">Cek typo, kontras warna, resolusi logo, margin, dan preview di berbagai device.
-              <br><strong>Timeline:</strong> 30 menit - 1 jam | <strong>Output:</strong> Draft final siap kirim
-            </div>
-          </li>
-          <li>
-            <span class="step-num">5</span>
-            <div class="step-title">Feedback & Revision</div>
-            <div class="step-desc">Revisi ringan (warna, typo) selesai dalam hitungan jam. Revisi mayor dikomunikasikan
-              ulang.
-              <br><strong>Timeline:</strong> 2-6 jam per putaran | <strong>Output:</strong> Draft revisi + catatan
-              perubahan
-            </div>
-          </li>
-          <li>
-            <span class="step-num">6</span>
-            <div class="step-title">Finalization & Archiving</div>
-            <div class="step-desc">Ekspor multi-format dengan nama sistematis. Backup disimpan 6 bulan untuk re-print
-              atau edit minor.
-              <br><strong>Timeline:</strong> 30 menit | <strong>Output:</strong> File final + folder arsip terstruktur
-            </div>
-          </li>
-        </ol>
       </section>
+    </div> <!-- Akhir Tab 2 -->
 
-      <div class="section-head rate-head">
+    <!-- Tab 3: Workflow 3D Premium -->
+    <div class="tab-pane" id="tab-workflow">
+      <section class="premium-why-section" id="workflow" style="margin-top: 2rem;">
+        <div class="premium-noise-layer"></div>
+        <div class="premium-radial-glow"></div>
+        <div class="premium-heading-wrapper" style="position: relative; z-index: 2;">
+          <h2 class="premium-title">Workflow Produksi Terukur</h2>
+          <p class="premium-subtitle">Transparansi penuh di setiap tahap. Tidak ada "magic box" yang bikin penasaran, semuanya jelas dan terukur.</p>
+        </div>
+        
+        <div class="workflow-timeline-container">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-node left fade-up-item">
+            <div class="timeline-icon-box"><i class="fa-solid fa-file-signature"></i></div>
+            <div class="timeline-big-icon"><i class="fa-solid fa-file-signature"></i></div>
+            <div class="timeline-glass-card">
+              <h3 style="color: white; margin-top: 0; font-size: 1.25rem;">1. Intake & Briefing</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0;">Spesifikasi teknis: jenis desain, ukuran, tujuan, target audiens. <br><strong style="color: #60a5fa">Output:</strong> Brief tertulis + timeline.</p>
+            </div>
+          </div>
+
+          <div class="timeline-node right fade-up-item">
+            <div class="timeline-icon-box"><i class="fa-solid fa-palette"></i></div>
+            <div class="timeline-big-icon"><i class="fa-solid fa-palette"></i></div>
+            <div class="timeline-glass-card">
+              <h3 style="color: white; margin-top: 0; font-size: 1.25rem;">2. Visual Direction</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0;">Tentukan hirarki visual, mood, dan analisis alignment brand awal. <br><strong style="color: #60a5fa">Output:</strong> Palet warna + font pairing.</p>
+            </div>
+          </div>
+
+          <div class="timeline-node left fade-up-item">
+            <div class="timeline-icon-box"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="timeline-big-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="timeline-glass-card">
+              <h3 style="color: white; margin-top: 0; font-size: 1.25rem;">3. Production Phase</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0;">Eksekusi desain dengan layer terstruktur (headline, visual utama, layout). <br><strong style="color: #60a5fa">Output:</strong> Draft 1 untuk review.</p>
+            </div>
+          </div>
+
+          <div class="timeline-node right fade-up-item">
+            <div class="timeline-icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div class="timeline-big-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div class="timeline-glass-card">
+              <h3 style="color: white; margin-top: 0; font-size: 1.25rem;">4. Quality Control</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0;">Cek typo, kontras, resolusi aset, margin, and test readability 3 detik. <br><strong style="color: #60a5fa">Output:</strong> Draft siap kirim.</p>
+            </div>
+          </div>
+
+          <div class="timeline-node left fade-up-item">
+            <div class="timeline-icon-box"><i class="fa-solid fa-comments"></i></div>
+            <div class="timeline-big-icon"><i class="fa-solid fa-comments"></i></div>
+            <div class="timeline-glass-card">
+              <h3 style="color: white; margin-top: 0; font-size: 1.25rem;">5. Feedback & Revision</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0;">Revisi gesit warna atau posisi beres dalam hitungan jam. <br><strong style="color: #60a5fa">Output:</strong> Desain yang disempurnakan.</p>
+            </div>
+          </div>
+
+          <div class="timeline-node right fade-up-item">
+            <div class="timeline-icon-box"><i class="fa-solid fa-box-archive"></i></div>
+            <div class="timeline-big-icon"><i class="fa-solid fa-box-archive"></i></div>
+            <div class="timeline-glass-card">
+              <h3 style="color: white; margin-top: 0; font-size: 1.25rem;">6. Finalization</h3>
+              <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 0;">Ekspor multi-format (print/web). Arsip file master dicadangkan 6 bulan. <br><strong style="color: #60a5fa">Output:</strong> Folder arsip rapi.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div> <!-- Akhir Tab 3 -->
+
+    <!-- Tab 4: Rate Card -->
+    <div class="tab-pane" id="tab-pricing">
+      <div class="section-head rate-head" style="margin-top: 1rem;">
         <div>
           <h2 class="section-title"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24"
                 role="presentation">
@@ -640,10 +699,15 @@
           </ul>
         </div>
       </div>
-    </section>
+    </div> <!-- Akhir Tab 4 -->
 
-    <section class="content-section reveal">
-      <details class="sop-accordion">
+    <!-- Tab 5: FAQ & Kontak -->
+    <div class="tab-pane" id="tab-faq">
+      <section class="content-section reveal">
+        <div class="premium-heading-wrapper">
+          <h2 class="premium-title" style="font-size: 2rem;">Information & Syarat</h2>
+        </div>
+        <details class="sop-accordion">
         <summary>Terms & Conditions / SOP</summary>
         <ul class="checklist">
           <li>Pembayaran: satuan lunas di awal (&lt; Rp 500rb) atau DP 50% (&gt; Rp 500rb). Paket bulanan dibayar
@@ -683,7 +747,8 @@
           <div class="contact-value">Tarempa Selatan</div>
         </div>
       </div>
-    </section>
+      </section>
+    </div> <!-- Akhir Tab 5 -->
   </main>
 
   <footer class="page-footer">
@@ -695,6 +760,95 @@
   <script src="/assets/js/whatsapp.js"></script>
   <script src="/assets/js/gallery-protection.js"></script>
   <script src="/assets/js/click-spark.js"></script>
+  <script>
+    // JS for the Tab System & Sticky Nav
+    const stickyWrapper = document.getElementById('stickyNavWrapper');
+    const inpageToggleBtn = document.getElementById('inpageToggleBtn');
+    const inpageNavMenu = document.getElementById('inpageNavMenu');
+
+    // Tab Script
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(!btn.hasAttribute('data-target')) return;
+        
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) targetPane.classList.add('active');
+
+        if (inpageNavMenu.classList.contains('show')) {
+          inpageNavMenu.classList.remove('show');
+          inpageToggleBtn.querySelector('i').classList.remove('fa-xmark');
+          inpageToggleBtn.querySelector('i').classList.add('fa-bars');
+        }
+      });
+    });
+
+    // Contact Panel Dropdown Script
+    const contactTriggerBtn = document.getElementById('contactTriggerBtn');
+    const contactDropdown = document.getElementById('contactDropdown');
+
+    if (contactTriggerBtn && contactDropdown) {
+      contactTriggerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        contactDropdown.classList.toggle('show');
+        contactTriggerBtn.classList.toggle('active');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!contactDropdown.contains(e.target) && !contactTriggerBtn.contains(e.target)) {
+          contactDropdown.classList.remove('show');
+          contactTriggerBtn.classList.remove('active');
+        }
+      });
+    }
+
+    if (inpageToggleBtn && inpageNavMenu) {
+      inpageToggleBtn.addEventListener('click', () => {
+        inpageNavMenu.classList.toggle('show');
+        const icon = inpageToggleBtn.querySelector('i');
+        if (inpageNavMenu.classList.contains('show')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        } else {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
+      });
+    }
+
+    if (stickyWrapper) {
+      const observer = new IntersectionObserver(
+        ([e]) => { e.target.classList.toggle('is-sticky', e.intersectionRatio < 1) },
+        { threshold: [1] }
+      );
+      observer.observe(stickyWrapper);
+    }
+
+    // Fade-Up Observer
+    const fadeUpElements = document.querySelectorAll('.fade-up-item');
+    if (fadeUpElements.length > 0) {
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { root: null, rootMargin: '0px', threshold: 0.15 });
+
+      fadeUpElements.forEach((el, index) => {
+        el.style.transitionDelay = `${index * 120}ms`;
+        fadeObserver.observe(el);
+      });
+    }
+  </script>
 </body>
 
 </html>
