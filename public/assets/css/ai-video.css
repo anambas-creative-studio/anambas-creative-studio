@@ -710,3 +710,117 @@ html {
   0%, 100% { transform: translate(-50%, -50%) perspective(300px) rotateY(-15deg) translateY(0px); }
   50% { transform: translate(-50%, -50%) perspective(300px) rotateY(-15deg) translateY(-12px); }
 }
+
+/* ==========================================================================
+   PORTFOLIO PREMIUM GRID
+   ========================================================================== */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+.portfolio-card {
+  position: relative;
+  aspect-ratio: 9/16;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #080c14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(58, 143, 221, 0.6);
+  box-shadow: 0 15px 40px rgba(58, 143, 221, 0.25);
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: transform 0.6s ease, opacity 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-img {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.portfolio-play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  padding-left: 4px;
+}
+
+.portfolio-card:hover .portfolio-play-btn {
+  background: rgba(58, 143, 221, 0.85);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(58, 143, 221, 0.6);
+}
+
+.portfolio-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 1rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, transparent 100%);
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-title {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
