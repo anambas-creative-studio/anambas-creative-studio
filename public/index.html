@@ -1325,8 +1325,11 @@
                 return;
             }
 
+            // Generate local date string for Indonesian Time (WIB) - resets at 12 malam
+            const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' });
+
             // Jalankan normal jika sudah online
-            fetch("https://api.counterapi.dev/v1/anambas-creative-studio/homepage/up")
+            fetch(`https://api.counterapi.dev/v1/anambas-creative-studio/homepage_${today}/up`)
                 .then(res => res.json())
                 .then(data => {
                     if (el && typeof data.count !== "undefined") {
