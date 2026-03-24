@@ -1309,18 +1309,34 @@
         </svg>
     </a>
 
-    <!-- Visitor Counter Script (Anti-Adblock) -->
+    <!-- Visitor Counter Script (Anti-Adblock & Local Handling) -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            const el = document.getElementById("visitor-count");
+            
+            // Handle jika dibuka dari D:\ secara lokal
+            if (window.location.protocol === "file:") {
+                if (el) {
+                    el.innerText = "(Muncul setelah di-Deploy ke Vercel)";
+                    el.classList.replace("text-base", "text-sm");
+                    el.classList.replace("text-white", "text-brand-cyan");
+                    el.classList.remove("font-extrabold");
+                }
+                return;
+            }
+
+            // Jalankan normal jika sudah online
             fetch("https://api.counterapi.dev/v1/anambas-creative-studio/homepage/up")
                 .then(res => res.json())
                 .then(data => {
-                    const el = document.getElementById("visitor-count");
                     if (el && typeof data.count !== "undefined") {
                         el.innerText = data.count.toLocaleString("id-ID");
                     }
                 })
-                .catch(err => console.error("Counter API failed", err));
+                .catch(err => {
+                    console.error("Counter API failed", err);
+                    if (el) el.innerText = "Error Loading";
+                });
         });
     </script>
 </body>
