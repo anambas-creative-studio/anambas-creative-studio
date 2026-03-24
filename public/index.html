@@ -117,6 +117,10 @@
     }
     </script>
     <style>
+        /* Hide scrollbar for mobile slider */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         /* Floating WA Button */
         .floating-wa {
             position: fixed;
@@ -1064,9 +1068,10 @@
                 <p class="text-slate-400 text-lg max-w-2xl mx-auto">Kenalan dengan tim inti Anambas Creative Studio yang memastikan setiap project visual Anda dieksekusi dengan standar premium.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Mobile Slider Container -->
+            <div class="flex flex-nowrap md:grid md:grid-cols-2 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-4 md:px-0 max-w-4xl mx-auto hide-scrollbar -mx-4 md:mx-auto">
                 <!-- PINNI -->
-                <div class="group relative rounded-3xl border border-white/5 border-t-brand-purple/20 border-l-brand-purple/20 shadow-[inset_1px_1px_0_rgba(139,92,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-purple/40 hover:shadow-[0_8px_32px_rgba(139,92,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up">
+                <div class="w-[85vw] sm:w-[400px] flex-shrink-0 md:w-auto md:flex-shrink snap-center group relative rounded-3xl border border-white/5 border-t-brand-purple/20 border-l-brand-purple/20 shadow-[inset_1px_1px_0_rgba(139,92,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-purple/40 hover:shadow-[0_8px_32px_rgba(139,92,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up">
                     <div class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none"></div>
                     <div class="p-8 text-center">
                         <div class="w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-br from-brand-purple to-brand-cyan group-hover:scale-105 transition-transform duration-300">
@@ -1082,7 +1087,7 @@
                 </div>
 
                 <!-- BANG LATEP -->
-                <div class="group relative rounded-3xl border border-white/5 border-t-brand-blue/20 border-l-brand-blue/20 shadow-[inset_1px_1px_0_rgba(59,130,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-blue/40 hover:shadow-[0_8px_32px_rgba(59,130,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up" style="animation-delay:0.1s">
+                <div class="w-[85vw] sm:w-[400px] flex-shrink-0 md:w-auto md:flex-shrink snap-center group relative rounded-3xl border border-white/5 border-t-brand-blue/20 border-l-brand-blue/20 shadow-[inset_1px_1px_0_rgba(59,130,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-blue/40 hover:shadow-[0_8px_32px_rgba(59,130,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up" style="animation-delay:0.1s">
                     <div class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none"></div>
                     <div class="p-8 text-center">
                         <div class="w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-br from-brand-blue to-brand-cyan group-hover:scale-105 transition-transform duration-300">
