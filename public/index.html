@@ -117,10 +117,6 @@
     }
     </script>
     <style>
-        /* Hide scrollbar for mobile slider */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
         /* Floating WA Button */
         .floating-wa {
             position: fixed;
@@ -348,7 +344,7 @@
                 </div>
 
                 <!-- RIGHT: 3D Isometric Illustration -->
-                <div class="flex-shrink-0 w-full lg:w-[480px] xl:w-[540px] reveal-up" style="animation-delay:0.3s">
+                <div class="hidden lg:block flex-shrink-0 w-full lg:w-[480px] xl:w-[540px] reveal-up" style="animation-delay:0.3s">
                     <div class="relative">
                         <!-- Glow behind illustration -->
                         <div
@@ -1068,37 +1064,36 @@
                 <p class="text-slate-400 text-lg max-w-2xl mx-auto">Kenalan dengan tim inti Anambas Creative Studio yang memastikan setiap project visual Anda dieksekusi dengan standar premium.</p>
             </div>
 
-            <!-- Mobile Slider Container -->
-            <div class="flex flex-nowrap md:grid md:grid-cols-2 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 md:pb-0 px-4 md:px-0 max-w-4xl mx-auto hide-scrollbar -mx-4 md:mx-auto">
+            <div class="grid grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto px-2 md:px-0">
                 <!-- PINNI -->
-                <div class="w-[85vw] sm:w-[400px] flex-shrink-0 md:w-auto md:flex-shrink snap-center group relative rounded-3xl border border-white/5 border-t-brand-purple/20 border-l-brand-purple/20 shadow-[inset_1px_1px_0_rgba(139,92,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-purple/40 hover:shadow-[0_8px_32px_rgba(139,92,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up">
+                <div class="group relative rounded-2xl md:rounded-3xl border border-white/5 border-t-brand-purple/20 border-l-brand-purple/20 shadow-[inset_1px_1px_0_rgba(139,92,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-purple/40 hover:shadow-[0_8px_32px_rgba(139,92,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-2 md:hover:-translate-y-3 reveal-up">
                     <div class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none"></div>
-                    <div class="p-8 text-center">
-                        <div class="w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-br from-brand-purple to-brand-cyan group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-5 md:p-8 text-center">
+                        <div class="w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-6 rounded-full p-1 bg-gradient-to-br from-brand-purple to-brand-cyan group-hover:scale-105 transition-transform duration-300">
                             <!-- Placeholder image. Ganti <i> dengan <img> jika ada foto asli -->
-                            <div class="w-full h-full rounded-full bg-brand-darker flex items-center justify-center border-4 border-brand-darker overflow-hidden">
-                                <i class="fa-solid fa-user-tie text-4xl text-slate-400 group-hover:text-brand-purple transition-colors"></i>
+                            <div class="w-full h-full rounded-full bg-brand-darker flex items-center justify-center border-2 md:border-4 border-brand-darker overflow-hidden">
+                                <i class="fa-solid fa-user-tie text-2xl md:text-4xl text-slate-400 group-hover:text-brand-purple transition-colors"></i>
                             </div>
                         </div>
-                        <h3 class="font-heading text-2xl font-bold mb-1 text-white group-hover:text-brand-purple transition-colors">PINNI</h3>
-                        <p class="text-brand-cyan font-semibold text-sm tracking-wider uppercase mb-4">Manager</p>
-                        <p class="text-slate-400 text-sm leading-relaxed relative z-10">Fokus pada manajemen proyek dan strategi komunikasi, memastikan klien mendapatkan pelayanan fast-response dengan pricing transparan.</p>
+                        <h3 class="font-heading text-lg md:text-2xl font-bold mb-1 text-white group-hover:text-brand-purple transition-colors">PINNI</h3>
+                        <p class="text-brand-cyan font-semibold text-[10px] md:text-sm tracking-wider uppercase mb-1 md:mb-4">Manager</p>
+                        <p class="hidden md:block text-slate-400 text-sm leading-relaxed relative z-10">Fokus pada manajemen proyek dan strategi komunikasi, memastikan klien mendapatkan pelayanan fast-response dengan pricing transparan.</p>
                     </div>
                 </div>
 
                 <!-- BANG LATEP -->
-                <div class="w-[85vw] sm:w-[400px] flex-shrink-0 md:w-auto md:flex-shrink snap-center group relative rounded-3xl border border-white/5 border-t-brand-blue/20 border-l-brand-blue/20 shadow-[inset_1px_1px_0_rgba(59,130,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-blue/40 hover:shadow-[0_8px_32px_rgba(59,130,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-3 reveal-up" style="animation-delay:0.1s">
+                <div class="group relative rounded-2xl md:rounded-3xl border border-white/5 border-t-brand-blue/20 border-l-brand-blue/20 shadow-[inset_1px_1px_0_rgba(59,130,246,0.1)] bg-gradient-to-br from-brand-darker/60 to-brand-dark/40 backdrop-blur-md hover:bg-brand-dark/40 hover:border-brand-blue/40 hover:shadow-[0_8px_32px_rgba(59,130,246,0.2)] overflow-hidden transition-all duration-500 hover:-translate-y-2 md:hover:-translate-y-3 reveal-up" style="animation-delay:0.1s">
                     <div class="absolute inset-0 bg-[url('/assets/img/batik-pattern.svg')] bg-[length:60px_60px] opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none"></div>
-                    <div class="p-8 text-center">
-                        <div class="w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-br from-brand-blue to-brand-cyan group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-5 md:p-8 text-center">
+                        <div class="w-20 h-20 md:w-32 md:h-32 mx-auto mb-3 md:mb-6 rounded-full p-1 bg-gradient-to-br from-brand-blue to-brand-cyan group-hover:scale-105 transition-transform duration-300">
                             <!-- Placeholder image -->
-                            <div class="w-full h-full rounded-full bg-brand-darker flex items-center justify-center border-4 border-brand-darker overflow-hidden">
-                                <i class="fa-solid fa-wand-magic-sparkles text-4xl text-slate-400 group-hover:text-brand-blue transition-colors"></i>
+                            <div class="w-full h-full rounded-full bg-brand-darker flex items-center justify-center border-2 md:border-4 border-brand-darker overflow-hidden">
+                                <i class="fa-solid fa-wand-magic-sparkles text-2xl md:text-4xl text-slate-400 group-hover:text-brand-blue transition-colors"></i>
                             </div>
                         </div>
-                        <h3 class="font-heading text-2xl font-bold mb-1 text-white group-hover:text-brand-blue transition-colors">BANG LATEP</h3>
-                        <p class="text-brand-cyan font-semibold text-sm tracking-wider uppercase mb-4">Visual Producer</p>
-                        <p class="text-slate-400 text-sm leading-relaxed relative z-10">Art Director dan konseptor visual yang memastikan output Graphic Design maupun AI Video diracik secara estetik layaknya masterpiece.</p>
+                        <h3 class="font-heading text-lg md:text-2xl font-bold mb-1 text-white group-hover:text-brand-blue transition-colors">BANG LATEP</h3>
+                        <p class="text-brand-cyan font-semibold text-[10px] md:text-sm tracking-wider uppercase mb-1 md:mb-4">Visual Producer</p>
+                        <p class="hidden md:block text-slate-400 text-sm leading-relaxed relative z-10">Art Director dan konseptor visual yang memastikan output Graphic Design maupun AI Video diracik secara estetik layaknya masterpiece.</p>
                     </div>
                 </div>
             </div>
